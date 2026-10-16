@@ -11,12 +11,21 @@ import html, json, re, shutil, sys
 from pathlib import Path
 import markdown
 
-CSS = """body{font:15px/1.6 -apple-system,system-ui,sans-serif;max-width:900px;margin:24px auto;padding:0 18px;color:#1d1d1f;background:#fafafa}
-a{color:#0a58ca}h1{font-size:24px}h2{font-size:18px;border-bottom:1px solid #ddd;padding-bottom:4px;margin-top:30px}h3{font-size:15px}
-table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #ddd;padding:5px 8px;vertical-align:top;text-align:left}
-th{background:#f0f0f0}blockquote{border-left:3px solid #0a7cff;margin:8px 0;padding-left:10px;color:#444}
-nav{font-size:13px;margin-bottom:14px}nav a{margin-right:12px}code{background:#eee;padding:0 4px;border-radius:4px}
-.card{background:#fff;border:1px solid #e3e3e3;border-radius:10px;padding:12px 14px;margin:10px 0}small{color:#777}"""
+# Light by default. Dark when the reader's system is dark, and always inside Agent Base: its People hub door
+# (people.route.ts) serves every page as <html data-theme="hub">, in the hub's own colours (sampled from the live hub).
+CSS = """:root{--bg:#fafafa;--fg:#1d1d1f;--strong:#111;--muted:#444;--faint:#777;--line:#ddd;--card:#fff;--card-line:#e3e3e3;
+--th:#f0f0f0;--code:#eee;--link:#0a58ca;--quote:#0a7cff;--font:-apple-system,system-ui,sans-serif;color-scheme:light}
+:root[data-theme=hub]{--bg:#171715;--fg:#ecece8;--strong:#f5f4ef;--muted:#9e9e98;--faint:rgb(255 255 255/.48);
+--line:rgb(255 255 255/.1);--card:#1d1d1b;--card-line:rgb(255 255 255/.06);--th:rgb(255 255 255/.04);--code:rgb(255 255 255/.07);
+--link:rgb(255 167 38);--quote:rgb(255 167 38);--font:"Geist",ui-sans-serif,system-ui,-apple-system,sans-serif;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme]){--bg:#121212;--fg:#e6e6e6;--strong:#fafafa;--muted:#b0b0b0;--faint:#8a8a8a;
+--line:#333;--card:#1b1b1b;--card-line:#2a2a2a;--th:#1f1f1f;--code:#262626;--link:#7aa7ff;--quote:#7aa7ff;color-scheme:dark}}
+body{font:15px/1.6 var(--font);max-width:900px;margin:24px auto;padding:0 18px;color:var(--fg);background:var(--bg)}
+a{color:var(--link)}h1,h2,h3{color:var(--strong)}h1{font-size:24px}h2{font-size:18px;border-bottom:1px solid var(--line);padding-bottom:4px;margin-top:30px}h3{font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid var(--line);padding:5px 8px;vertical-align:top;text-align:left}
+th{background:var(--th)}blockquote{border-left:3px solid var(--quote);margin:8px 0;padding-left:10px;color:var(--muted)}
+nav{font-size:13px;margin-bottom:14px}nav a{margin-right:12px}code{background:var(--code);padding:0 4px;border-radius:4px}
+.card{background:var(--card);border:1px solid var(--card-line);border-radius:10px;padding:12px 14px;margin:10px 0}small{color:var(--faint)}"""
 
 MIDDLEWARE = r"""// One sign-in that lasts: the login form sets a year-long HttpOnly cookie. Agent Base's /people proxy sends Basic auth.
 const COOKIE = "siso_lib";
