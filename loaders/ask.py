@@ -52,7 +52,7 @@ Configuration (replaces the old hardcoded machine-specific path list):
   PEOPLE_GRAPH_CONFIG    JSON file mapping domain -> path
   PEOPLE_GRAPH_PEOPLE    direct path to the people database (and _BOOKS, etc.)
   PEOPLE_GRAPH_ROOT      directory to look in for <domain>.sqlite
-  --root / --people      the same, per invocation
+  --root / --people      the same, per invocation (--people-db aliases --people)
 """
 import argparse
 import json
@@ -83,13 +83,17 @@ def main():
     ap.add_argument("--offset", type=int, default=0)
     ap.add_argument("--max-hops", type=int, default=3)
     ap.add_argument("--root", help="directory holding <domain>.sqlite fixtures")
-    ap.add_argument("--people", help="explicit path to the people database")
+    ap.add_argument("--people", "--people-db", dest="people",
+                    help="explicit existing people database (read-only)")
     ap.add_argument("--html", action="store_true",
                     help="render the human explorer projection instead of JSON")
     a = ap.parse_args()
 
-    explicit = {"people": a.people} if a.people else None
-    engine = QueryEngine(explicit_paths=explicit, root=a.root)
+    explicit = {"people": a.people} if a.people is not None else None
+    try:
+        engine = QueryEngine(explicit_paths=explicit, root=a.root)
+    except ValueError as exc:
+        ap.error(str(exc))
 
     try:
         if a.inventory:

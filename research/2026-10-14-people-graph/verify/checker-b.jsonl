@@ -1,0 +1,55 @@
+{"id":"blind1-pantheon-mit","verified":true,"note":"PMC4700860 abstract: Pantheon 1.0 includes 11,341 biographies present in more than 25 Wikipedia languages; matches row."}
+{"id":"blind2-simile","verified":true,"note":"SiliconANGLE 2026-02-12: $100M led by Index Ventures (matches); later $200M Series B led by Greenoaks at ~$2B valuation dated 2026-07-30 confirmed by two secondary sources; Deloitte not named in those sources (CVS Health, Gallup, Wealthfront are)."}
+{"id":"prior-familysearch-tree","verified":true,"note":"FamilySearch blog: about 1.74 billion names as of July 2025; matches row."}
+{"id":"said-filmot","verified":true,"note":"filmot.com (Vietnamese UI): over 1.7 billion (Tỷ) caption/transcript records across 1.5B videos and 84M channels; 18B metadata videos; matches row."}
+{"id":"prior-gleif-golden-copy","verified":true,"note":"GLEIF download page: three Golden Copy sets issued daily plus four delta files at 8 hours, 24 hours, 7 days and 31 days earlier; matches row."}
+{"id":"prior-splink","verified":true,"note":"Splink docs: links a million records on a laptop in approximately one minute; DuckDB or Spark for 100+ million records; matches row."}
+{"id":"graph-cosmos-gl","verified":true,"note":"gh api cosmosgl/graph: 1,296 stars, 86 forks, MIT (row 1.3k / 86 forks, correct)."}
+{"id":"graph-sigma-js","verified":true,"note":"gh api jacomyal/sigma.js: 12,187 stars, 1,618 forks, MIT (row 12.2k / 1.6k, correct)."}
+{"id":"graph-embedding-atlas","verified":true,"note":"gh api apple/embedding-atlas: 4,987 stars, 331 forks, MIT (row 5.0k / 331, correct; licence is MIT)."}
+{"id":"graph-graphology","verified":true,"note":"gh api graphology/graphology: 1,760 stars, 117 forks, MIT (row 1.8k, correct)."}
+{"id":"graph-gephi-lite","verified":true,"note":"gh api gephi/gephi-lite: 354 stars, 48 forks, licence GPL-3.0 (row 354 correct; licence not stated in row)."}
+{"id":"graph-react-force-graph","verified":true,"note":"gh api vasturiano/react-force-graph: 3,324 stars, 357 forks, MIT (row 3.3k, correct)."}
+{"id":"graph-cytoscape-js","verified":true,"note":"gh api cytoscape/cytoscape.js: 11,237 stars, 1,680 forks, MIT (row 11.2k / 1.7k, correct)."}
+{"id":"graph-graphistry","verified":true,"note":"gh api graphistry/pygraphistry: 2,569 stars, BSD-3-Clause (row 2.6k, BSD-3, correct)."}
+{"id":"graph-oligrapher","verified":true,"note":"gh api public-accountability/oligrapher: 112 stars, 22 forks, GPL-3.0; row 112 stars correct; 1,438 commits not checked."}
+{"id":"graph-pantheon","verified":true,"note":"pantheon.world homepage: '85,000+ Biographies' (row 85,000, correct)."}
+{"id":"blind2-kinskigpt","verified":true,"note":"gh api DevRico003/KinskiGPT: 2 stars, last push 2024-02-07 (row 'a couple of stars', Feb 2024, correct)."}
+{"id":"blind2-ghola","verified":true,"note":"gh api mdatz/ghola: repo exists, 8 stars, now archived (row does not claim status; existence confirmed)."}
+{"id":"blind2-hubermananswers","verified":true,"note":"gh api NinoRisteski/HubermanAnswers: exists, 20 stars, Apache-2.0; GPT-3.5 build claim not checked."}
+{"id":"blind2-wikidata-explorer","verified":true,"note":"gh api Bryce-MW/WikidataExplorer: exists, 4 stars, last push 2021-07-25; row gives no number."}
+{"id":"blind2-ash2","verified":true,"note":"github.com/clarkzjw/ash2 returns 200; gh api shows 0 stars, last push 2023-08-09; row gives no number."}
+{"id":"said-trump-tweet-data-github","verified":true,"note":"GitHub commits API: last page 10,191 commits (matches row); repo 203 stars, 25 forks."}
+{"id":"blind2-monica-prm","verified":true,"note":"gh api monicahq/monica: exists, 25,480 stars, AGPL-3.0; row claims self-hosted free, not contradicted."}
+{"id":"blind2-prifina","verified":true,"note":"Prifina pricing page: Individual $24/month, free 30-day trial (match); $300 concierge setup not seen on the page."}
+{"id":"blind2-elevenlabs-iconic","verified":true,"note":"ElevenLabs blog: Michael Caine plus over 25 other iconic voices (matches ~25-28); page live."}
+{"id":"blind2-generative-agents","verified":true,"note":"arxiv.org/abs/2304.03442 returns 200; the paper's 25 agents and two simulated game days match."}
+{"id":"blind2-meta-ai-studio","verified":true,"note":"about.fb.com Jul 2024 post: AI Studio built with Llama 3.1, launched for US; matches row."}
+{"id":"blind2-sewards-ai-mp","verified":true,"note":"PoliticsHome article returns 200; exists. The voice-only claim was not read in the article body."}
+{"id":"blind2-twarc","verified":true,"note":"pypi.org/project/twarc returns 200; package exists; row gives no number."}
+{"id":"blind2-rdf-explorer-paper","verified":true,"note":"ijcai.org/proceedings/2020/666 returns 200; paper exists."}
+{"id":"blind1-web-of-stories","verified":true,"note":"webofstories.com returns 200; site exists. The per-interview segment count was not checked."}
+{"id":"blind2-lexfridman-transcripts","verified":true,"note":"lexfridman.com transcript embed returns 200; exists. Episode count not claimed as a figure in the row."}
+{"id":"blind1-musicbrainz","verified":true,"note":"musicbrainz.org/statistics (updated 2026-10-13): 3,012,034 artists (row 2,872,200, -4.7%, within 10%); Person 53.6% (row 53.7%)."}
+{"id":"blind1-opensanctions-peps","verified":true,"note":"opensanctions.org/datasets/peps live: 1,973,054 total entities (row 2,030,394, -2.8%), 726,408 people (row 757k, -4%), 211,392 positions (row 225k, -6%); all within 10%, row is a 2025-08-30 snapshot."}
+{"id":"blind1-fundable","verified":true,"note":"tryfundable.ai: 366k+ company people (row 366k matches); page says updated multiple times per day, row says daily (minor)."}
+{"id":"blind1-biography-reference-bank","verified":true,"note":"about.ebsco.com BRB page: 996,000 biographical records (matches row)."}
+{"id":"blind1-forbes-billionaires","verified":true,"note":"Apify listing: pricing from $1.00 per 1,000 billionaire profiles (matches); the 3,400+ live-list count was not checked."}
+{"id":"ui-google-scholar-author","verified":true,"note":"Google Scholar profile JicYPdAAAAAJ (Geoffrey Hinton): 1,098,715 citations, h 195, i10 552, since 2021 633,109 / 134 / 406; co-authors Sejnowski and Dahl listed (all match)."}
+{"id":"ui-github-profile","verified":true,"note":"gh api users/ElonMusk: 148 followers, 0 following, 2 public repos (row 149 followers, within 10%)."}
+{"id":"ui-goodreads-author","verified":true,"note":"goodreads.com Stephen King (3389): followers 901,079 (row 901,045, correct)."}
+{"id":"ui-wikipedia-person","verified":true,"note":"en.wikipedia Elon Musk langlinks API: 163 other-language links (matches row 163 languages)."}
+{"id":"prior-wikidata-data-model","verified":true,"note":"Wikidata Data_model and Statistics pages: 13,972 properties, 76% external identifiers, 123,624,278 items, 2,556,092,845 edits (all match). The 68% referenced statement share was not checked."}
+{"id":"prior-nomenklatura","verified":true,"note":"OpenSanctions 2021 blog: 130,000 entities, ~17B pairwise comparisons (130k x 130k cross-product), 34,600 manual decisions, 31,000 positive, ~300,000 negative pairs; all quoted correctly."}
+{"id":"said-gumroad-elon-tweets","verified":true,"note":"lowbyte.gumroad.com listing shows '20200+ elon musk tweets' (matches); the $0.99 price was not visible in the fetched page."}
+{"id":"said-paul-graham-essays","verified":true,"note":"paulgraham.com/articles.html: 246 unique .html links, which includes a few non-essay pages; row says about 235 entries (within 10%)."}
+{"id":"said-internet-archive-tv-news","verified":true,"note":"archive.org advancedsearch collection:tvnews numFound 4,580,741 today; row's 4,430,000 (from a secondary site) is within 10%; the 350,000 at 2012 launch was not checked."}
+{"id":"blind1-wikidata","verified":false,"note":"Wikidata SPARQL today: ?p wdt:P31 wd:Q5 returns 13,738,279 (row 6,376,879 is a stale 2025 figure, about half the live count)."}
+{"id":"blind1-openalex","verified":false,"note":"api.openalex.org today: 326,886,422 works and 96,474,526 authors; row's '2013M authors' is implausible (about 20x live) and the 209M works figure is out of date."}
+{"id":"blind1-ieee-age-dataset","verified":false,"note":"IEEE DataPort page title: 'Age dataset ... of 1.22 million distinguished people'; row says 122 million records (factor of 100 wrong)."}
+{"id":"blind2-awesome-role-playing","verified":false,"note":"gh api Neph0s/awesome-llm-role-playing-with-persona: 1,076 stars today; row says ~844-993 (below the 10% band)."}
+{"id":"blind2-meerkat-crm","verified":false,"note":"gh api fbuchner/meerkat-crm: 295 stars today (row 128 is the at-capture figure and no longer holds, more than 2x)."}
+{"id":"blind2-chatbotkit-pg","verified":false,"note":"chatbotkit.com/hub/bots/clhnz62hv0018p50gat0aoia5 returns HTTP 404; the cited bot does not exist at this URL."}
+{"id":"blind1-osome-social-archives","verified":false,"note":"osome.iu.edu/resources/data-resources-bak returns HTTP 404; the cited OSoMe data page is not at this URL (row's claim unsupported by its source)."}
+{"id":"said-listen-notes-api","verified":false,"note":"listennotes.com API pricing (en): free tier is 150 requests/month, not 300; $200/month base fee for 1+ requests matches the row's commercial figure."}
+{"id":"said-politwoops","verified":false,"note":"projects.propublica.org/politwoops: no count of deleted tweets, politicians or countries on the page; archive last updated 2022 and no longer maintained, so the 1.1M figure is unsupported by the cited source."}

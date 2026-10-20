@@ -1,0 +1,24 @@
+#!/bin/bash
+# people: the people-watch CLI (people_watch.py). Data and sweeps live on the Mac mini.
+# On the mini it runs locally; anywhere else it forwards over ssh, so agents on any machine use the same command.
+#   people deploy    copy the app from this repo to the mini and (re)load the 6-hourly sweep
+H="${PEOPLE_WATCH_HOME:-$HOME/SISO_Workspace/_data/people-watch}"
+REPO_WATCH="$HOME/SISO_Workspace/_data/worktrees/siso/main/library/people-graph/watch"
+SSH=(ssh -o ConnectTimeout=10 -o BatchMode=yes -o RemoteCommand=none -T mac-mini)
+
+if [ "$1" = deploy ]; then
+  "${SSH[@]}" 'mkdir -p ~/SISO_Workspace/_data/people-watch/app ~/SISO_Workspace/_data/people-watch/logs' || exit 1
+  scp -q -o BatchMode=yes -o RemoteCommand=none "$REPO_WATCH/people_watch.py" "$REPO_WATCH/people" "$REPO_WATCH/com.siso.people-watch.plist" \
+    mac-mini:SISO_Workspace/_data/people-watch/app/ || exit 1
+  exec "${SSH[@]}" 'cd ~/SISO_Workspace/_data/people-watch/app && chmod +x people people_watch.py &&
+    { [ -x venv/bin/yt-dlp ] || { python3 -m venv venv && venv/bin/pip -q install -U "yt-dlp[default]" youtube-transcript-api; }; } &&
+    venv/bin/yt-dlp --version &&
+    cp com.siso.people-watch.plist ~/Library/LaunchAgents/ &&
+    launchctl bootout gui/$(id -u)/com.siso.people-watch 2>/dev/null;
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.siso.people-watch.plist && echo "deployed; sweep every 6h"'
+fi
+
+if [ -f "$H/app/people_watch.py" ]; then
+  exec "$H/app/venv/bin/python" "$H/app/people_watch.py" "$@"
+fi
+exec "${SSH[@]}" "SISO_Workspace/_data/people-watch/app/people $(printf '%q ' "$@")"

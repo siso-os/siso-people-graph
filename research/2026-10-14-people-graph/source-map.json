@@ -1,0 +1,131 @@
+{
+  "as_of": "2026-10-14",
+  "entities": [
+    {
+      "name": "Elon Musk",
+      "kind": "person",
+      "identity_confidence": "high",
+      "channels": [
+        {"type": "x", "url": "https://x.com/elonmusk", "handle": "@elonmusk", "size": "~241.2M followers (early Aug 2026, third-party: Manifold, Epidemic Sound)", "cadence": "unknown (not measured)", "worth_pulling": "low", "why": "Highest volume, lowest method density. Poll only for picks."},
+        {"type": "github", "url": "https://github.com/xai-org", "handle": "xai-org", "size": "13,347 followers, 11 public repos (2026-10-14)", "cadence": "active; x-algorithm pushed 2026-10-13, grok-build pushed 2026-09-29", "worth_pulling": "high", "why": "Only primary-source code from his companies (xAI/Grok). Release and repo events are cheap to poll."},
+        {"type": "github", "url": "https://github.com/teslamotors", "handle": "teslamotors", "size": "6,591 followers, 67 public repos (2026-10-14)", "cadence": "sporadic", "worth_pulling": "low", "why": "Mostly vehicle software and legacy repos."},
+        {"type": "github", "url": "https://github.com/ElonMusk", "handle": "ElonMusk", "size": "148 followers, 2 public repos (2026-10-14)", "cadence": "n/a", "worth_pulling": "low", "why": "Personal GitHub account is minor; not his main work."}
+      ],
+      "notable_works": [
+        {"name": "x-algorithm", "type": "repo", "url": "https://github.com/xai-org/x-algorithm", "note": "Algorithm for the For You feed on X; 33,608 stars; pushed 2026-10-13."},
+        {"name": "grok-build", "type": "repo", "url": "https://github.com/xai-org/grok-build", "note": "Coding-agent harness and TUI; 27,360 stars; pushed 2026-09-29."},
+        {"name": "grok-1", "type": "repo", "url": "https://github.com/xai-org/grok-1", "note": "Open model release, 2024-08-30; 52,226 stars."}
+      ]
+    },
+    {
+      "name": "Theo Browne (t3.gg)",
+      "kind": "person",
+      "identity_confidence": "high",
+      "channels": [
+        {"type": "youtube", "url": "https://www.youtube.com/@t3dotgg", "handle": "@t3dotgg (Theo - t3.gg)", "size": "551K subs, 1,105 videos, ~108M views (SpeakRJ, 2026-07-17); 561K (Social Blade, undated); 571K (OutlierKit, undated)", "cadence": "not measured in sources", "worth_pulling": "high", "why": "Benchmarks (SnitchBench) and build methods; also commentary on other builders. Pull by pick, not all uploads."},
+        {"type": "x", "url": "https://x.com/t3dotgg", "handle": "@t3dotgg", "size": "~316K followers (SuperX, undated, single source)", "cadence": "unknown", "worth_pulling": "med", "why": "Announcements for T3 Code, benchmarks and tools."},
+        {"type": "github", "url": "https://github.com/t3dotgg", "handle": "t3dotgg", "size": "20,506 followers, 135 public repos (2026-10-14)", "cadence": "sporadic (most recent push 2026-02 to 2026-10)", "worth_pulling": "med", "why": "Small utilities (stripe-recommendations 6,427 stars); the org repos matter more."},
+        {"type": "github", "url": "https://github.com/pingdotgg", "handle": "pingdotgg", "size": "1,846 followers, 14 public repos (2026-10-14)", "cadence": "active (t3code pushed 2026-10-14)", "worth_pulling": "high", "why": "Hosts T3 Code (27,432 stars), the coding-agent control plane."},
+        {"type": "site", "url": "https://snitchbench.t3.gg", "handle": "n/a", "size": "n/a", "cadence": "n/a", "worth_pulling": "med", "why": "SnitchBench results page, per Simon Willison's 2025 post. Not fetched in this run."}
+      ],
+      "notable_works": [
+        {"name": "SnitchBench", "type": "benchmark", "url": "https://simonwillison.net/2025/May/31/snitchbench-with-llm/", "note": "Tests whether LLMs take unprompted snitch actions; reproduced by Simon Willison, 2025-05-31. Numbers in that post are partly garbled."},
+        {"name": "T3 Code", "type": "product (open source)", "url": "https://github.com/pingdotgg/t3code", "note": "Desktop control plane for coding agents (Claude Code, Codex, OpenCode, Cursor). 27,432 stars. Launch dates conflict across sources."},
+        {"name": "stripe-recommendations", "type": "repo", "url": "https://github.com/t3dotgg/stripe-recommendations", "note": "Practical Stripe integration guide; 6,427 stars; last pushed 2025-02-07."},
+        {"name": "skatebench", "type": "benchmark (unverified)", "url": "", "note": "Named in the brief. No source found in 4 searches. Treat as unverified."},
+        {"name": "T3 Chat", "type": "product (unverified in this run)", "url": "", "note": "Named in the brief. No source found in this run."}
+      ]
+    },
+    {
+      "name": "Matthew Miller (BridgeMind founder)",
+      "kind": "person",
+      "identity_confidence": "medium-low: single aggregator source (everydev.ai) names him Founder & CEO; company site returned 403; no second source. 'Matthew Blode' is a different person.",
+      "channels": [
+        {"type": "x", "url": "https://x.com/bridgemindai", "handle": "@bridgemindai (company)", "size": "not retrieved", "cadence": "unknown", "worth_pulling": "med", "why": "Company X account from the everydev listing. Founder's personal handle not found."}
+      ],
+      "notable_works": [
+        {"name": "Vibe Coding an App Until I Make $1,000,000", "type": "build-in-public series", "url": "https://www.everydev.ai/developers/bridgemind", "note": "Started Sep 2025. ARR $75,924 on day 161 (2026-02-08); $185,652 on day 181 per a listing. Self-reported."}
+      ]
+    },
+    {
+      "name": "BridgeMind",
+      "kind": "org",
+      "identity_confidence": "high (company listing); founder name medium-low",
+      "channels": [
+        {"type": "x", "url": "https://x.com/bridgemindai", "handle": "@bridgemindai", "size": "not retrieved", "cadence": "unknown", "worth_pulling": "med", "why": "Official announcements."},
+        {"type": "site", "url": "https://www.everydev.ai/developers/bridgemind", "handle": "n/a", "size": "n/a", "cadence": "n/a", "worth_pulling": "low", "why": "Aggregator listing used as the main source. bridgemind.ai returned 403."}
+      ],
+      "notable_works": [
+        {"name": "BridgeBench", "type": "benchmark", "url": "https://www.everydev.ai/developers/bridgemind", "note": "AI coding model benchmark platform. No methodology or results found in this run; check the company site first."},
+        {"name": "BridgeSpace", "type": "product", "url": "https://www.everydev.ai/developers/bridgemind", "note": "Desktop vibe-coding command center (Jan 2026)."},
+        {"name": "BridgeMCP", "type": "product", "url": "https://www.everydev.ai/developers/bridgemind", "note": "MCP server for shared memory, task routing and auth (2026-02-02)."}
+      ]
+    },
+    {
+      "name": "David Andre (candidate: David Ondrej)",
+      "kind": "person",
+      "identity_confidence": "low: no channel named David Andre found; David Ondrej is a phonetic guess. Shaan to confirm.",
+      "channels": [
+        {"type": "youtube", "url": "https://www.youtube.com/@davidondrej", "handle": "@davidondrej", "size": "420K subs, 594 videos, 29M views (DevEducators, 2026-10-12); ~398K (July 2026, analytics site); ~402K (SponsorRadar)", "cadence": "daily upload frequency (DevEducators, 2026-10-12)", "worth_pulling": "med", "why": "High volume; practical AI coding tutorials. Sample by playlist, not all uploads."}
+      ],
+      "notable_works": []
+    },
+    {
+      "name": "Cueb (unresolved)",
+      "kind": "person",
+      "identity_confidence": "low: no channel named Cueb or Cube found in 4 searches. Top candidate Cole Medin (~20-30%), runner-up IndyDevDan (<15%). A link to the source video would resolve it.",
+      "channels": [
+        {"type": "youtube", "url": "https://www.youtube.com/@colemedin", "handle": "@colemedin (candidate)", "size": "228K subs, 324 videos, 13.2M views (DevEducators, 2026-10-12)", "cadence": "weekly (Wed 7pm CDT, per DevEducators)", "worth_pulling": "high", "why": "Agent and coding tutorials that ship code. Candidate only."},
+        {"type": "youtube", "url": "https://www.youtube.com/@indydevdan", "handle": "@indydevdan (candidate)", "size": "151K subs, 218 videos, 5.8M views (DevEducators, 2026-10-12); ~136K-139K (other trackers, July 2026)", "cadence": "weekly (DevEducators, 2026-10-12)", "worth_pulling": "high", "why": "Claude Code hooks and agentic-engineering methods. Candidate only."},
+        {"type": "github", "url": "https://github.com/coleam00", "handle": "coleam00", "size": "7,523 followers, 74 public repos (2026-10-14)", "cadence": "active (Archon pushed 2026-10-14)", "worth_pulling": "high", "why": "Archon and context-engineering-intro are method repos."},
+        {"type": "github", "url": "https://github.com/disler", "handle": "disler", "size": "4,635 followers, 56 public repos (2026-10-14)", "cadence": "active (super-simple-software-factory pushed 2026-08-04)", "worth_pulling": "high", "why": "Claude Code hooks and multi-agent observability repos."}
+      ],
+      "notable_works": [
+        {"name": "Archon", "type": "repo (Cole Medin candidate)", "url": "https://github.com/coleam00/Archon", "note": "Open-source harness builder for AI coding; 23,684 stars."},
+        {"name": "claude-code-hooks-mastery", "type": "repo (IndyDevDan candidate)", "url": "https://github.com/disler/claude-code-hooks-mastery", "note": "Claude Code hooks reference; 3,940 stars."}
+      ]
+    },
+    {
+      "name": "Convex",
+      "kind": "org",
+      "identity_confidence": "high",
+      "channels": [
+        {"type": "github", "url": "https://github.com/get-convex", "handle": "get-convex", "size": "2,301 followers, 209 public repos (2026-10-14)", "cadence": "very active (several repos pushed 2026-10-13 and 2026-10-14)", "worth_pulling": "high", "why": "chef, agent, convex-evals and agent-skills are the AI-builder method signal."},
+        {"type": "youtube", "url": "https://www.youtube.com/@convex-dev", "handle": "@convex-dev", "size": "12,600 subs, 353 videos (Plushcap, June 2026); 12.6K subs, 351 videos, ~1.1M views (DevEducators, July 2026)", "cadence": "unknown", "worth_pulling": "low", "why": "Small channel; mostly product tutorials."},
+        {"type": "site", "url": "https://convex.dev", "handle": "n/a", "size": "n/a", "cadence": "n/a", "worth_pulling": "med", "why": "Blog and docs; not fetched in this run."}
+      ],
+      "notable_works": [
+        {"name": "chef", "type": "repo", "url": "https://github.com/get-convex/chef", "note": "The only AI app builder that knows backend; 4,599 stars; pushed 2026-10-14."},
+        {"name": "agent", "type": "repo", "url": "https://github.com/get-convex/agent", "note": "Build AI agents on Convex with persistent chat history; 357 stars."},
+        {"name": "convex-evals", "type": "repo", "url": "https://github.com/get-convex/convex-evals", "note": "Eval harness for AI code generation on Convex; 130 stars; pushed 2026-10-14."},
+        {"name": "better-auth", "type": "repo", "url": "https://github.com/get-convex/better-auth", "note": "Convex and Better Auth integration; 765 stars."}
+      ]
+    },
+    {
+      "name": "Fable (Showrunner)",
+      "kind": "org",
+      "identity_confidence": "medium: chosen as the AI-builder match (San Francisco, Showrunner). Other Fables: Toronto accessibility company; SF cybersecurity-training company. Confirm with Shaan.",
+      "channels": [
+        {"type": "site", "url": "https://techcrunch.com/2025/09/06/why-is-an-amazon-backed-ai-startup-making-orson-welles-fan-fiction", "handle": "n/a", "size": "n/a", "cadence": "n/a", "worth_pulling": "low", "why": "Coverage article used as the anchor; company site not fetched."}
+      ],
+      "notable_works": [
+        {"name": "Showrunner", "type": "product", "url": "https://www.eweek.com/de/news/ai-tv-showrunner-fable-studio-amazon/", "note": "AI platform for generating and remixing animated TV scenes and episodes from text prompts. CEO Edward Saatchi."},
+        {"name": "SHOW-2", "type": "model", "url": "https://techcrunch.com/2025/09/06/why-is-an-amazon-backed-ai-startup-making-orson-welles-fan-fiction", "note": "Proprietary model behind Showrunner (per aggregator summaries)."}
+      ]
+    },
+    {
+      "name": "Groq",
+      "kind": "org",
+      "identity_confidence": "high",
+      "channels": [
+        {"type": "github", "url": "https://github.com/groq", "handle": "groq", "size": "1,334 followers, 41 public repos (2026-10-14)", "cadence": "active (groq-typescript pushed 2026-10-12)", "worth_pulling": "med", "why": "openbench is the method repo; SDKs and cookbook are low-signal."},
+        {"type": "site", "url": "https://groq.com", "handle": "n/a", "size": "n/a", "cadence": "n/a", "worth_pulling": "med", "why": "Company and GroqCloud pages; not fetched in this run."}
+      ],
+      "notable_works": [
+        {"name": "openbench", "type": "repo", "url": "https://github.com/groq/openbench", "note": "Provider-agnostic open-source evaluation infrastructure for LMs; 821 stars; pushed 2026-08-26."},
+        {"name": "groq-api-cookbook", "type": "repo", "url": "https://github.com/groq/groq-api-cookbook", "note": "Example apps; 1,432 stars; pushed 2026-08-18."},
+        {"name": "Groq 3 LPU", "type": "hardware (Nvidia-branded)", "url": "https://www.shopifreaks.com/nvidia-licenses-groqs-inference-chip-technology-for-20b-and-unveils-groq-3-lpu-at-gtc-2026/", "note": "Shown at Nvidia GTC on 2026-03-16 after the Dec 2025 licensing deal."}
+      ]
+    }
+  ]
+}

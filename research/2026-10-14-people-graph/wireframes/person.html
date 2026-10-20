@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Person page wireframe: Elon Musk (Q317521)</title>
+<style>
+  /* Structure only. Grey boxes, system font, black and grey. UI Hub restyles later. */
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #111; background: #eee; font-size: 14px; line-height: 1.4; }
+  .page { max-width: 1120px; margin: 0 auto; padding: 12px; display: grid; gap: 12px; }
+  .box { background: #fff; border: 1px solid #999; padding: 12px; }
+  .sample { background: #ddd; border: 1px dashed #777; padding: 1px 4px; font-size: 12px; color: #333; }
+  .borrow { display: block; font-size: 11px; color: #555; border-bottom: 1px dotted #999; margin-bottom: 8px; padding-bottom: 4px; }
+  .ph { background: #ccc; border: 1px solid #888; display: flex; align-items: center; justify-content: center; color: #333; font-size: 12px; min-height: 60px; text-align: center; padding: 6px; }
+  .chip { display: inline-block; border: 1px solid #666; background: #eee; padding: 2px 8px; margin: 2px; border-radius: 10px; font-size: 12px; }
+  .chip.on { background: #333; color: #fff; }
+  .btn { display: inline-block; border: 1px solid #111; padding: 6px 12px; background: #fff; font: inherit; }
+  .btn.solid { background: #111; color: #fff; }
+  .badge { display: inline-block; border: 2px solid #111; padding: 2px 8px; font-weight: bold; font-size: 12px; }
+  .muted { color: #666; font-size: 12px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .bar { height: 10px; background: #ddd; border: 1px solid #888; position: relative; }
+  .bar > span { position: absolute; left: 0; top: 0; bottom: 0; background: #444; }
+  .row { display: grid; grid-template-columns: 150px 1fr 60px; gap: 8px; align-items: center; margin: 6px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; border-bottom: 1px solid #ccc; padding: 6px 4px; vertical-align: top; }
+  th { background: #e5e5e5; font-weight: 600; }
+  .quote { border-left: 4px solid #444; padding: 6px 10px; margin: 8px 0; background: #f6f6f6; }
+  .quote .meta { font-size: 12px; color: #555; margin-top: 4px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  details summary { cursor: pointer; font-size: 12px; color: #333; }
+  .hist { display: flex; align-items: flex-end; gap: 3px; height: 70px; border-bottom: 1px solid #555; }
+  .hist > div { background: #666; width: 100%; }
+  .ego { position: relative; min-height: 180px; }
+  .foot { font-size: 12px; color: #444; }
+  .tabs { display: flex; gap: 0; border-bottom: 1px solid #444; flex-wrap: wrap; }
+  .tabs span { padding: 6px 12px; border: 1px solid #888; border-bottom: none; background: #ddd; margin-right: 2px; }
+  .tabs span.active { background: #fff; font-weight: 600; }
+  .input { border: 1px solid #555; background: #fff; padding: 8px; color: #666; }
+  .stack > * + * { margin-top: 8px; }
+
+  /* Narrow viewport: single column below 800px */
+  @media (max-width: 800px) {
+    .grid2, .grid3, .pair { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 1fr; gap: 2px; }
+    .hdr-cols { display: block !important; }
+    .hdr-cols > * + * { margin-top: 12px; }
+    table.wide td:nth-child(n+4), table.wide th:nth-child(n+4) { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 1. HEADER -->
+  <section class="box" aria-label="Header">
+    <span class="borrow">borrows: FamousBirthdays - header with 2x2 facts grid and one action beside the rank pill (person-ui.md best of a)</span>
+    <div class="hdr-cols" style="display:grid; grid-template-columns: 180px 1fr; gap: 16px;">
+      <div class="ph" style="min-height:200px;">photo (licensed or none)</div>
+      <div>
+        <div style="font-size:26px; font-weight:700;">Elon Musk</div>
+        <div class="stack" style="margin-top:4px;">
+          <span class="chip">kind: person</span>
+          <span class="chip">life: 1971 - (living)</span>
+          <span class="badge">T3</span>
+          <span class="muted">tier: deep (T3), promoted by Shaan, reason stored</span>
+        </div>
+        <p style="margin:10px 0;">Sample one-liner: South African-born entrepreneur and engineer; leads companies in space, cars, payments and AI (placeholder text).</p>
+        <div class="grid2" style="max-width:420px;">
+          <div><span class="muted">Wikidata</span><br>Q317521</div>
+          <div><span class="muted">X</span><br>@elonmusk</div>
+          <div><span class="muted">YouTube</span><br>[channel placeholder]</div>
+          <div><span class="muted">GitHub</span><br>ElonMusk (low confidence)</div>
+        </div>
+        <div class="stack" style="margin-top:10px;">
+          <button class="btn solid">Follow</button>
+          <button class="btn">Watch (T2 polling)</button>
+          <span class="muted">Follow = my list. Watch = poll new items (X, YouTube, GitHub).</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. RANK -->
+  <section class="box" aria-label="Rank">
+    <span class="borrow">borrows: FamousBirthdays - rank pill beside the action (rank); Pantheon - sparkline attention signal (component bars)</span>
+    <div class="grid2">
+      <div>
+        <div style="font-size:18px; font-weight:600;">Rank: <span class="sample">#00 sample</span> <span class="muted">cohort: entrepreneurs, born 1900s (sample)</span></div>
+        <div class="muted" style="margin-top:4px;">Inputs present: <span class="sample">4 of 4 (sample)</span> &middot; confidence: <span class="sample">high (sample)</span></div>
+        <div class="muted">Method: <a href="#method">rank_score_v1 (version 2026-10-14.1, sample)</a></div>
+      </div>
+      <div>
+        <div class="row"><span>Sitelinks</span><div class="bar"><span style="width:0%"></span></div><span class="sample">00 pct</span></div>
+        <div class="row"><span>Attention (QRank 12mo)</span><div class="bar"><span style="width:0%"></span></div><span class="sample">00 pct</span></div>
+        <div class="row"><span>PageRank (Wikipedia)</span><div class="bar"><span style="width:0%"></span></div><span class="sample">00 pct</span></div>
+        <div class="row"><span>Works (our catalogues)</span><div class="bar"><span style="width:0%"></span></div><span class="sample">00 pct</span></div>
+      </div>
+    </div>
+    <p class="muted">Bars are components, not one number. Bar fills are placeholders; the values are sample.</p>
+  </section>
+
+  <!-- 3. KNOWLEDGE PACK SUMMARY -->
+  <section class="box" aria-label="Knowledge pack summary">
+    <span class="borrow">borrows: knowledge-packs.md pack lines (structure from SYSTEM.md 7); citation chip per line from advisor-design.md section 2</span>
+    <div style="font-size:16px; font-weight:600; margin-bottom:6px;">In their words: principles (pack 2026-10-14.1, sample)</div>
+    <ol class="stack" style="padding-left:20px; margin:0;">
+      <li>Principle line placeholder one: start from first principles, not analogy. <span class="chip">[3 quotes]</span> <span class="muted">first said 2013 / last said 2024 (sample)</span></li>
+      <li>Principle line placeholder two: delete before you optimise. <span class="chip">[3 quotes]</span> <span class="muted">sample dates</span></li>
+      <li>Principle line placeholder three: default to shipping in public. <span class="chip">[3 quotes]</span> <span class="muted">sample dates</span></li>
+      <li>Principle line placeholder four: schedule matters more than headcount. <span class="chip">[3 quotes]</span> <span class="muted">sample dates</span></li>
+      <li>Principle line placeholder five: publish the failure rate. <span class="chip">[3 quotes]</span> <span class="muted">sample dates</span></li>
+    </ol>
+    <p class="muted" style="margin-top:8px;">A line without cited utterances does not ship. Each chip opens its quote rows in section 5.</p>
+  </section>
+
+  <!-- 4. WORKS -->
+  <section class="box" aria-label="Works">
+    <span class="borrow">borrows: Semantic Scholar - per-item TLDR and influence badge; Google Scholar - sortable table with since-2021 split; Letterboxd - poster-grid filters if films</span>
+    <div class="tabs" role="tablist">
+      <span class="active">Companies / products</span><span>Repos</span><span>Books</span><span>Videos</span><span>Papers</span>
+    </div>
+    <div style="margin:8px 0; display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+      <span class="input" style="flex:1; min-width:180px;">Filter by name...</span>
+      <span class="chip">Sort: date (sample)</span>
+      <span class="chip">Sort: influence (sample)</span>
+      <span class="chip">since 2021 split (sample)</span>
+    </div>
+    <table class="wide">
+      <thead><tr><th>Title</th><th>Kind</th><th>Date</th><th>Influence</th><th>One-line why (TLDR, sample)</th></tr></thead>
+      <tbody>
+        <tr><td>[Company A, placeholder]</td><td>company</td><td>2002 (sample)</td><td><span class="badge">High</span></td><td>Placeholder one-line summary of what the work is.</td></tr>
+        <tr><td>[Company B, placeholder]</td><td>company</td><td>2003 (sample)</td><td><span class="badge">High</span></td><td>Placeholder one-line summary.</td></tr>
+        <tr><td>[Product C, placeholder]</td><td>product</td><td>2008 (sample)</td><td><span class="badge">Med</span></td><td>Placeholder one-line summary.</td></tr>
+        <tr><td>[Product D, placeholder]</td><td>product</td><td>2019 (sample)</td><td><span class="badge">Low</span></td><td>Placeholder one-line summary.</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">Influence badge is a sample label; the rule behind it is shown in the rank section. Sort controls are static here.</p>
+  </section>
+
+  <!-- 5. WHAT THEY SAID -->
+  <section class="box" aria-label="What they said">
+    <span class="borrow">borrows: Roll Call Factbase - dated rows with place, event type and a transcript action; Goodreads Ask-the-author - the quote-block layout only (unsourced there, sourced here)</span>
+    <div class="stack">
+      <div><span class="muted">Topics:</span>
+        <span class="chip on">rockets (sample)</span><span class="chip">cars (sample)</span><span class="chip">payments (sample)</span><span class="chip">AI (sample)</span><span class="chip">hiring (sample)</span><span class="chip">+ more</span>
+      </div>
+      <div>
+        <div class="muted">Utterances per year (sample counts, not real)</div>
+        <div class="hist" role="img" aria-label="Year histogram placeholder">
+          <div style="height:20%"></div><div style="height:35%"></div><div style="height:50%"></div><div style="height:45%"></div><div style="height:60%"></div><div style="height:80%"></div><div style="height:55%"></div><div style="height:90%"></div><div style="height:70%"></div><div style="height:100%"></div><div style="height:65%"></div><div style="height:75%"></div><div style="height:40%"></div><div style="height:30%"></div><div style="height:25%"></div><div style="height:50%"></div>
+        </div>
+        <div class="muted" style="display:flex; justify-content:space-between;"><span>2010</span><span>2025</span></div>
+      </div>
+    </div>
+
+    <div class="quote">
+      <div>"[Verbatim quote text placeholder. Real text is shown exactly as said, with no edits.]"</div>
+      <div class="meta">Said: 2021-05-12 (sample) &middot; medium: <span class="chip">video icon</span> &middot; source: [source title placeholder] &middot; <a href="#">https://example.org/source-url (placeholder)</a></div>
+      <details><summary>Show context (before / after)</summary>
+        <div class="muted" style="margin-top:6px;">Before: [placeholder context line]<br>After: [placeholder context line]</div>
+      </details>
+    </div>
+    <div class="quote">
+      <div>"[Second verbatim quote placeholder.]"</div>
+      <div class="meta">Said: 2016-03-02 (sample) &middot; medium: <span class="chip">post icon</span> &middot; source: [post title placeholder] &middot; <a href="#">https://example.org/post-url (placeholder)</a></div>
+      <details><summary>Show context (before / after)</summary>
+        <div class="muted" style="margin-top:6px;">Before: [placeholder]<br>After: [placeholder]</div>
+      </details>
+    </div>
+
+    <div style="margin-top:12px; font-weight:600;">Contradiction pair (dated, side by side, never "believes")</div>
+    <div class="pair" style="margin-top:6px;">
+      <div class="quote"><div class="muted">2019 (sample)</div><div>"[2019 verbatim placeholder]"</div><div class="meta">source: [title] &middot; <a href="#">URL placeholder</a></div></div>
+      <div class="quote"><div class="muted">2023 (sample)</div><div>"[2023 verbatim placeholder]"</div><div class="meta">source: [title] &middot; <a href="#">URL placeholder</a></div></div>
+    </div>
+  </section>
+
+  <!-- 6. ADVISOR BOX -->
+  <section class="box" aria-label="Advisor">
+    <span class="borrow">borrows: advisor-design.md - answer as cited quote blocks, refusal with nearest topics and coverage (no UI product matches all of these)</span>
+    <div style="font-weight:600;">Ask Elon Musk's public record</div>
+    <div class="input" style="margin:6px 0;">Type a question... (input placeholder)</div>
+    <button class="btn solid">Ask</button>
+    <span class="muted">Answers use verbatim spans only. The page never writes new claims.</span>
+
+    <div style="margin-top:12px;" class="muted">Sample answer (sample question: "How do you think about hiring?")</div>
+    <div class="quote">
+      <div>"[Cited span 1, verbatim placeholder]"</div>
+      <div class="meta">2018-07-14 (sample) &middot; video &middot; [source title] &middot; <a href="#">URL&amp;t=0000 (placeholder)</a> &middot; <details style="display:inline;"><summary style="display:inline;">context</summary>[context placeholder]</details></div>
+    </div>
+    <div class="quote">
+      <div>"[Cited span 2, verbatim placeholder]"</div>
+      <div class="meta">2022-11-03 (sample) &middot; post &middot; [source title] &middot; <a href="#">URL (placeholder)</a> &middot; <details style="display:inline;"><summary style="display:inline;">context</summary>[context placeholder]</details></div>
+    </div>
+
+    <div style="margin-top:12px;" class="muted">Sample refusal (sample question: "What does he think about [unrelated topic]?")</div>
+    <div class="box" style="margin-top:6px; background:#f3f3f3;">
+      <div style="font-weight:600;">Not in Elon Musk's public record (84 sources, 2010-2025)</div>
+      <div class="muted" style="margin-top:4px;">Nearest topics he did speak on (sample):</div>
+      <div style="margin-top:4px;"><span class="chip">nearest topic 1 (sample)</span><span class="chip">nearest topic 2 (sample)</span><span class="chip">nearest topic 3 (sample)</span></div>
+    </div>
+  </section>
+
+  <!-- 7. IDENTITIES AND SOURCES -->
+  <section class="box" aria-label="Identities and sources">
+    <span class="borrow">borrows: LittleSis - External Links list (SEC, Wikipedia, Wikidata in one place); Wikidata - aliases table for name variants</span>
+    <div class="grid2">
+      <div>
+        <div style="font-weight:600;">External IDs</div>
+        <table class="wide" style="margin-top:6px;">
+          <thead><tr><th>Scheme</th><th>Value</th><th>Method</th><th>Confidence</th></tr></thead>
+          <tbody>
+            <tr><td>wikidata</td><td>Q317521</td><td>hard</td><td><span class="sample">1.00 (sample)</span></td></tr>
+            <tr><td>x</td><td>@elonmusk</td><td>claimed</td><td><span class="sample">0.95 (sample)</span></td></tr>
+            <tr><td>youtube</td><td>[channel placeholder]</td><td>matched</td><td><span class="sample">0.90 (sample)</span></td></tr>
+            <tr><td>github</td><td>ElonMusk</td><td>matched</td><td><span class="sample">0.40 (sample, low)</span></td></tr>
+          </tbody>
+        </table>
+        <div style="font-weight:600; margin-top:12px;">Aliases (Wikidata)</div>
+        <div class="muted" style="margin-top:4px;">[alias placeholder] &middot; [alias placeholder] &middot; [alias placeholder]</div>
+      </div>
+      <div>
+        <div style="font-weight:600;">Merge history (reversible)</div>
+        <table style="margin-top:6px;">
+          <thead><tr><th>Date</th><th>Action</th><th>By</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>2026-10-01 (sample)</td><td>merged github:[login] into entity</td><td>splink</td><td><button class="btn">Undo</button></td></tr>
+            <tr><td>2026-09-12 (sample)</td><td>marked different: [record]</td><td>human</td><td><button class="btn">Undo</button></td></tr>
+          </tbody>
+        </table>
+        <div style="font-weight:600; margin-top:12px;">Coverage</div>
+        <div class="grid3" style="margin-top:6px;">
+          <div class="ph">sources: <span class="sample">84 (sample)</span></div>
+          <div class="ph">years: <span class="sample">2010-2025 (sample)</span></div>
+          <div class="ph">words: <span class="sample">0.0M (sample)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. RELATED PEOPLE -->
+  <section class="box" aria-label="Related people">
+    <span class="borrow">borrows: Google Scholar and Semantic Scholar co-authors - name with count beside it; Goodreads influences - link chips</span>
+    <div class="grid2">
+      <div>
+        <div style="font-weight:600;">Co-occurs with (counts, sample)</div>
+        <table style="margin-top:6px;">
+          <thead><tr><th>Person</th><th>Shared works</th><th>Shared quotes</th></tr></thead>
+          <tbody>
+            <tr><td>[Person A placeholder]</td><td>00 (sample)</td><td>00 (sample)</td></tr>
+            <tr><td>[Person B placeholder]</td><td>00 (sample)</td><td>00 (sample)</td></tr>
+            <tr><td>[Person C placeholder]</td><td>00 (sample)</td><td>00 (sample)</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:8px;"><span class="muted">Influenced by / influences:</span> <span class="chip">link chip (sample)</span><span class="chip">link chip (sample)</span></div>
+      </div>
+      <div>
+        <div style="font-weight:600;">Ego graph (depth 1, placeholder)</div>
+        <div class="ph ego" style="margin-top:6px;">ego-graph placeholder: centre node Elon Musk, up to 300 neighbours</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. FOOTER -->
+  <footer class="box foot" aria-label="Footer">
+    <span class="borrow">borrows: LittleSis - external-links footer pattern; disclosure wording from advisor-design.md section 4 (living person, public record)</span>
+    <div>Provenance: built from <span class="sample">84 sources (sample)</span> and our catalogues, last rebuilt <span class="sample">2026-10-14 (sample)</span>. Rank method <a href="#method">rank_score_v1</a>. Packs and quotes link to their source rows.</div>
+    <div style="margin-top:6px; font-weight:600;">From the public record. Not endorsed.</div>
+  </footer>
+
+</div>
+</body>
+</html>

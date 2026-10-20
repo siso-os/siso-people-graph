@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>People graph - Explore (wireframe, sample data)</title>
+<style>
+  /* STRUCTURE ONLY. Grey boxes, system font, black/grey. No external assets. */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 13px; color: #111; background: #f4f4f4; line-height: 1.35;
+  }
+  .borrow {
+    display: block; font-size: 10px; color: #555; background: #e2e2e2;
+    border: 1px dashed #888; padding: 2px 6px; margin: 0 0 6px 0;
+  }
+  .sample { color: #666; font-style: italic; }
+  .box { background: #e6e6e6; border: 1px solid #999; padding: 8px; }
+  .muted { color: #666; }
+  button, select, input[type=text] {
+    font: inherit; color: #111; background: #fff; border: 1px solid #888;
+    padding: 3px 8px; border-radius: 0;
+  }
+  button { cursor: pointer; }
+  button[aria-selected="true"], button.on { background: #111; color: #fff; border-color: #111; }
+  h2 { font-size: 14px; margin: 0 0 4px 0; }
+  h3 { font-size: 13px; margin: 8px 0 4px 0; }
+
+  /* ---------- top bar: search ---------- */
+  header.top {
+    background: #fff; border-bottom: 1px solid #888; padding: 8px 12px;
+    display: flex; gap: 12px; align-items: flex-start; position: sticky; top: 0; z-index: 5;
+  }
+  .brand { font-weight: bold; white-space: nowrap; padding-top: 4px; }
+  .search { position: relative; flex: 1; max-width: 720px; }
+  .search input[type=text] { width: 100%; padding: 6px 10px; font-size: 14px; }
+  .search .scope { font-size: 11px; color: #555; margin-top: 2px; }
+  .typeahead {
+    position: absolute; left: 0; right: 0; top: 100%; margin-top: 2px;
+    background: #fff; border: 1px solid #555; box-shadow: 0 2px 6px rgba(0,0,0,.2); z-index: 9;
+  }
+  .typeahead .row { display: grid; grid-template-columns: 56px 1fr 90px 40px; gap: 8px; padding: 6px 8px; border-bottom: 1px solid #ddd; align-items: center; }
+  .typeahead .row:last-child { border-bottom: none; }
+  .typeahead .row.active { background: #e6e6e6; }
+  .badge { font-size: 10px; border: 1px solid #555; padding: 0 4px; display: inline-block; }
+  .typeahead .foot { padding: 6px 8px; font-size: 11px; color: #555; background: #f0f0f0; }
+  .top .actions { display: flex; gap: 6px; padding-top: 2px; }
+  .toggle-rail, .toggle-drawer { display: none; }
+
+  /* ---------- three-column layout ---------- */
+  .layout { display: grid; grid-template-columns: 240px minmax(0, 1fr) 340px; gap: 10px; padding: 10px 12px; align-items: start; }
+  .rail, .drawer { position: sticky; top: 70px; }
+  .rail .box, .drawer .box { margin-bottom: 8px; }
+  .facet { margin-bottom: 8px; }
+  .facet label { display: flex; justify-content: space-between; gap: 6px; font-size: 12px; padding: 1px 0; }
+  .facet .n { color: #555; font-variant-numeric: tabular-nums; }
+  .chips span { display: inline-block; border: 1px solid #888; background: #fff; padding: 1px 6px; margin: 2px 2px 0 0; font-size: 11px; }
+
+  /* ---------- centre ---------- */
+  .centre { min-width: 0; }
+  .tabs { display: flex; gap: 0; border-bottom: 1px solid #555; margin-bottom: 8px; }
+  .tabs button { border-bottom: none; margin-right: -1px; }
+  .panel[hidden] { display: none; }
+  .scopebar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; font-size: 12px; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #888; font-size: 12px; }
+  th, td { text-align: left; padding: 5px 6px; border-bottom: 1px solid #ccc; vertical-align: top; }
+  th { background: #e6e6e6; font-weight: 600; }
+  td.num { font-variant-numeric: tabular-nums; }
+  .bars { display: grid; grid-template-columns: repeat(4, 46px); gap: 4px; }
+  .bars div.cell { font-size: 9px; color: #444; }
+  .bar { height: 6px; background: #ddd; border: 1px solid #888; margin-top: 2px; }
+  .bar i { display: block; height: 100%; background: #333; }
+  .why { color: #333; }
+  .bias { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+  .bias table { font-size: 11px; }
+  .footer-note { font-size: 11px; color: #555; margin-top: 6px; }
+
+  /* map */
+  .map {
+    position: relative; height: 420px; background: #d9d9d9; border: 1px solid #888; overflow: hidden;
+    background-image: radial-gradient(circle at 25% 30%, #c8c8c8 0, transparent 35%),
+                      radial-gradient(circle at 70% 65%, #bdbdbd 0, transparent 30%);
+  }
+  .map .dot { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #222; }
+  .map .cluster { position: absolute; border-radius: 50%; border: 1px dashed #555; background: rgba(0,0,0,.06); transform: translate(-50%,-50%); }
+  .map .label { position: absolute; font-size: 11px; font-weight: 600; background: rgba(255,255,255,.85); padding: 0 4px; transform: translate(-50%,-50%); white-space: nowrap; }
+  .map .lasso { position: absolute; right: 8px; bottom: 8px; background: #fff; border: 1px solid #555; padding: 4px 6px; font-size: 11px; max-width: 280px; }
+  .map .axis { position: absolute; left: 8px; top: 8px; font-size: 10px; color: #444; background: #fff; padding: 2px 4px; }
+
+  /* timeline */
+  .timeline { background: #fff; border: 1px solid #888; padding: 8px; font-size: 11px; }
+  .axis-row, .lane { display: grid; grid-template-columns: 150px 1fr; gap: 8px; align-items: center; }
+  .axis-row { border-bottom: 1px solid #555; padding-bottom: 4px; margin-bottom: 6px; color: #444; }
+  .axis-track { position: relative; height: 16px; }
+  .axis-track span { position: absolute; top: 0; transform: translateX(-50%); font-size: 10px; color: #444; }
+  .lane { height: 30px; border-bottom: 1px dotted #bbb; }
+  .lane .name { font-size: 11px; }
+  .lane .track { position: relative; height: 100%; background: linear-gradient(to right, transparent 0, transparent 100%); }
+  .lane .span { position: absolute; top: 10px; height: 8px; background: #888; }
+  .lane .tick { position: absolute; top: 4px; width: 2px; height: 20px; background: #111; }
+  .lane .tick.v { background: #555; width: 1px; }
+  .lane .tick.p { height: 12px; top: 10px; background: #111; }
+  .legend { margin-top: 6px; font-size: 11px; color: #555; }
+
+  /* ---------- drawer ---------- */
+  .ego-head { display: grid; grid-template-columns: 56px 1fr; gap: 8px; align-items: start; }
+  .avatar { width: 56px; height: 56px; background: #bbb; border: 1px solid #666; }
+  .pill { display: inline-block; background: #111; color: #fff; font-size: 11px; padding: 1px 6px; }
+  .crumbs { font-size: 11px; color: #444; margin: 6px 0; }
+  .crumbs a { color: #333; }
+  .graph-ph {
+    position: relative; height: 240px; background: #e2e2e2; border: 1px solid #888;
+  }
+  .graph-ph .node { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: #888; border: 1px solid #333; transform: translate(-50%,-50%); }
+  .graph-ph .node.c { width: 22px; height: 22px; background: #111; }
+  .graph-ph .edge { position: absolute; height: 1px; background: #777; transform-origin: 0 0; }
+  .graph-ph .cap { position: absolute; left: 6px; bottom: 6px; font-size: 10px; background: #fff; padding: 1px 4px; border: 1px solid #888; }
+  .ctrls { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0; }
+  .nb-list { list-style: none; margin: 0; padding: 0; max-height: 170px; overflow: auto; border: 1px solid #aaa; background: #fff; }
+  .nb-list li { display: grid; grid-template-columns: 1fr 48px 48px; gap: 6px; padding: 3px 6px; border-bottom: 1px solid #ddd; font-size: 11px; }
+  .path-picker { display: grid; grid-template-columns: 1fr; gap: 4px; }
+  .path-picker select { width: 100%; }
+
+  /* ---------- footer ---------- */
+  footer.foot {
+    border-top: 1px solid #888; background: #fff; padding: 10px 12px; font-size: 11px; color: #333;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px;
+  }
+  footer.foot ul { margin: 0; padding-left: 16px; }
+
+  /* ---------- narrow viewport: rail and drawer collapse to buttons ---------- */
+  @media (max-width: 899px) {
+    .layout { grid-template-columns: 1fr; }
+    .rail, .drawer { position: static; display: none; }
+    .rail.open, .drawer.open { display: block; }
+    .toggle-rail, .toggle-drawer { display: inline-block; }
+    .search .scope { display: none; }
+    header.top { flex-wrap: wrap; }
+    .bias { grid-template-columns: 1fr; }
+    footer.foot { grid-template-columns: 1fr; }
+    .bars { grid-template-columns: repeat(2, 60px); }
+    .typeahead .row { grid-template-columns: 50px 1fr 60px; }
+    .typeahead .row > :nth-child(4) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ 1. TOP: SEARCH ============ -->
+<header class="top">
+  <div class="brand">People graph<br><span class="muted" style="font-weight:normal">Explore</span></div>
+  <div class="search">
+    <span class="borrow">borrows: Wikidata (Q317521 page) - label, QID and one-line description in the typeahead</span>
+    <input type="text" value="sample query" aria-label="Search people and organisations">
+    <div class="scope">Searches people and orgs, all of history (BCE included). Sample results below.</div>
+    <div class="typeahead" role="listbox">
+      <div class="row active"><span class="badge">person</span><span>Sample Person A <span class="muted">(alias: sample alias)</span></span><span class="muted">c. 1800-1870</span><span>T2</span></div>
+      <div class="row"><span class="badge">person</span><span>Sample Person B</span><span class="muted">-0470 to -0399</span><span>T1</span></div>
+      <div class="row"><span class="badge">org</span><span>Sample Org C</span><span class="muted">1998-</span><span>T2</span></div>
+      <div class="row"><span class="badge">person</span><span>Sample Person D <span class="muted">(GitHub login, unresolved)</span></span><span class="muted">n/a</span><span>T0</span></div>
+      <div class="foot">Columns: kind, dates, tier. Enter opens the top match. Unresolved logins stay separate until a judgement says same.</div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="toggle-rail" type="button" onclick="toggleEl('rail')">Filters</button>
+    <button class="toggle-drawer" type="button" onclick="toggleEl('drawer')">Person</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ============ 2. LEFT RAIL: FACETS ============ -->
+  <aside class="rail" id="rail">
+    <div class="box">
+      <span class="borrow">borrows: Pantheon - occupation x country x era facet pages; live counts (graph-explorers #10, #6)</span>
+      <h2>Facets</h2>
+      <div class="muted" style="font-size:11px">Counts update on filter. <span class="sample">All counts are sample values.</span></div>
+    </div>
+
+    <div class="box facet">
+      <h3>Kind</h3>
+      <label><span><input type="checkbox" checked> person</span><span class="n">312,904 <span class="sample">sample</span></span></label>
+      <label><span><input type="checkbox" checked> org</span><span class="n">26,313 <span class="sample">sample</span></span></label>
+    </div>
+
+    <div class="box facet">
+      <h3>Occupation family</h3>
+      <label><span><input type="checkbox"> writer</span><span class="n">41,200</span></label>
+      <label><span><input type="checkbox"> artist</span><span class="n">38,015</span></label>
+      <label><span><input type="checkbox"> scientist</span><span class="n">29,774</span></label>
+      <label><span><input type="checkbox"> politician</span><span class="n">22,130</span></label>
+      <label><span><input type="checkbox"> software / engineer</span><span class="n">18,902</span></label>
+      <label><span><input type="checkbox"> sports</span><span class="n">15,611</span></label>
+      <div class="muted" style="font-size:11px">+ 24 more families</div>
+    </div>
+
+    <div class="box facet">
+      <h3>Era (birth century)</h3>
+      <label><span><input type="checkbox"> -5th c. BCE</span><span class="n">612</span></label>
+      <label><span><input type="checkbox"> -4th c. BCE</span><span class="n">1,140</span></label>
+      <label><span><input type="checkbox"> -3rd c. BCE</span><span class="n">1,480</span></label>
+      <label><span><input type="checkbox"> 18th c.</span><span class="n">9,020</span></label>
+      <label><span><input type="checkbox"> 19th c.</span><span class="n">41,300</span></label>
+      <label><span><input type="checkbox"> 20th c.</span><span class="n">118,400</span></label>
+      <label><span><input type="checkbox"> 21st c.</span><span class="n">140,000</span></label>
+      <div class="muted" style="font-size:11px">Counts are sample values.</div>
+    </div>
+
+    <div class="box facet">
+      <h3>Country / region</h3>
+      <label><span><input type="checkbox"> Europe</span><span class="n">98,000</span></label>
+      <label><span><input type="checkbox"> North America</span><span class="n">81,500</span></label>
+      <label><span><input type="checkbox"> East Asia</span><span class="n">40,200</span></label>
+      <label><span><input type="checkbox"> South Asia</span><span class="n">22,700</span></label>
+      <label><span><input type="checkbox"> Africa</span><span class="n">9,100</span></label>
+      <label><span><input type="checkbox"> Latin America</span><span class="n">11,400</span></label>
+      <div class="muted" style="font-size:11px">Region from Wikidata P27 (citizenship) and P19 (birthplace), shown together.</div>
+    </div>
+
+    <div class="box facet">
+      <h3>Topic</h3>
+      <input type="text" placeholder="search topics" aria-label="Search topics" style="width:100%">
+      <div class="chips" style="margin-top:4px">
+        <span>physics</span><span>chess</span><span>climate</span><span>open source</span><span>philosophy</span><span>film</span>
+      </div>
+    </div>
+
+    <div class="box facet">
+      <h3>Tier</h3>
+      <label><span><input type="radio" name="tier"> T0 skeleton</span><span class="n">~13.6M</span></label>
+      <label><span><input type="radio" name="tier"> T1 linked</span><span class="n">sample</span></label>
+      <label><span><input type="radio" name="tier"> T2 watched</span><span class="n">sample</span></label>
+      <label><span><input type="radio" name="tier"> T3 deep</span><span class="n">sample</span></label>
+    </div>
+
+    <div class="box facet">
+      <h3>Has said-corpus</h3>
+      <label><span><input type="checkbox"> has utterances (attribution &gt;= 0.9)</span><span class="n">sample</span></label>
+    </div>
+
+    <div class="box facet">
+      <h3>Gender (recorded, never inferred)</h3>
+      <label><span><input type="checkbox"> woman (as recorded)</span><span class="n">sample</span></label>
+      <label><span><input type="checkbox"> man (as recorded)</span><span class="n">sample</span></label>
+      <label><span><input type="checkbox"> other / not recorded</span><span class="n">sample</span></label>
+      <div class="muted" style="font-size:11px">Source field only. Names are never used to guess gender.</div>
+    </div>
+  </aside>
+
+  <!-- ============ 3. CENTRE: VIEW SWITCH ============ -->
+  <main class="centre">
+    <div class="scopebar">
+      <span>Cohort:</span>
+      <select aria-label="Cohort selector">
+        <option>Painters x birth century 19th (sample)</option>
+        <option>Physicists x 20th (sample)</option>
+        <option>All writers x -4th c. BCE (sample)</option>
+      </select>
+      <span class="muted">Scope: <span class="sample">312,904 people (sample)</span></span>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="lb" onclick="showTab('lb')">(a) Leaderboard</button>
+      <button role="tab" aria-selected="false" data-tab="map" onclick="showTab('map')">(b) Map</button>
+      <button role="tab" aria-selected="false" data-tab="tl" onclick="showTab('tl')">(c) Timeline</button>
+    </div>
+
+    <!-- (a) LEADERBOARD -->
+    <section class="panel" data-panel="lb" role="tabpanel">
+      <span class="borrow">borrows: Pantheon - "Occupation Rank N of M individuals" cohort card (pantheon-rankings.png, a 404 page showing those cohort labels); FamousBirthdays - rank pill beside one action (person-ui best of a)</span>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:44px">Rank</th>
+            <th>Name</th>
+            <th>Cohort</th>
+            <th>Components (sitelinks / QRank / PageRank / works)</th>
+            <th style="width:60px">Inputs</th>
+            <th>Why (1 line)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="num">1</td>
+            <td>Sample Painter 1</td>
+            <td>painter, 19th c.<br><span class="muted">n=412 (sample)</span></td>
+            <td>
+              <div class="bars">
+                <div class="cell">sitelinks<div class="bar"><i style="width:94%"></i></div></div>
+                <div class="cell">QRank 12m<div class="bar"><i style="width:88%"></i></div></div>
+                <div class="cell">PageRank<div class="bar"><i style="width:81%"></i></div></div>
+                <div class="cell">works<div class="bar"><i style="width:73%"></i></div></div>
+              </div>
+            </td>
+            <td class="num">4 / 4</td>
+            <td class="why">Sample: high breadth across editions; attention steady over 12 months.</td>
+          </tr>
+          <tr>
+            <td class="num">2</td>
+            <td>Sample Painter 2 <span class="badge">recent spike</span></td>
+            <td>painter, 19th c.</td>
+            <td>
+              <div class="bars">
+                <div class="cell">sitelinks<div class="bar"><i style="width:61%"></i></div></div>
+                <div class="cell">QRank 12m<div class="bar"><i style="width:97%"></i></div></div>
+                <div class="cell">PageRank<div class="bar"><i style="width:35%"></i></div></div>
+                <div class="cell">works<div class="bar"><i style="width:50%"></i></div></div>
+              </div>
+            </td>
+            <td class="num">3 / 4</td>
+            <td class="why">Sample: attention from one recent news spike; flagged, not hidden.</td>
+          </tr>
+          <tr>
+            <td class="num">3</td>
+            <td>Sample Painter 3</td>
+            <td>painter, 19th c.</td>
+            <td>
+              <div class="bars">
+                <div class="cell">sitelinks<div class="bar"><i style="width:70%"></i></div></div>
+                <div class="cell">QRank 12m<div class="bar"><i style="width:40%"></i></div></div>
+                <div class="cell">PageRank<div class="bar"><i style="width:66%"></i></div></div>
+                <div class="cell">works<div class="bar"><i style="width:50%"></i></div></div>
+              </div>
+            </td>
+            <td class="num">4 / 4</td>
+            <td class="why">Sample: canon via link graph more than page views.</td>
+          </tr>
+          <tr>
+            <td class="num">-</td>
+            <td>Sample Painter 4</td>
+            <td>painter, 19th c.</td>
+            <td><span class="muted">not ranked</span></td>
+            <td class="num">1 / 4</td>
+            <td class="why">Sample: insufficient evidence (fewer than 2 inputs). No rank shown.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="footer-note">Rows 1-4 of 412 (sample). Next page; export CSV of this cohort.</div>
+
+      <div class="bias">
+        <div class="box">
+          <h3>Bias panel: this cohort</h3>
+          <span class="borrow">borrows: ranking.md "Biases, and how to show them" - cohort base rate next to top-N share</span>
+          <table>
+            <thead><tr><th>Dimension</th><th>Cohort base rate</th><th>Top-N share (N=50)</th></tr></thead>
+            <tbody>
+              <tr><td>Women (as recorded)</td><td class="num">18.5% <span class="sample">(sample)</span></td><td class="num">12% <span class="sample">(sample)</span></td></tr>
+              <tr><td>Europe + N. America</td><td class="num">62% <span class="sample">(sample)</span></td><td class="num">88% <span class="sample">(sample)</span></td></tr>
+              <tr><td>Born after 1850</td><td class="num">40% <span class="sample">(sample)</span></td><td class="num">54% <span class="sample">(sample)</span></td></tr>
+              <tr><td>English-edition only</td><td class="num">n/a</td><td class="num">n/a</td></tr>
+            </tbody>
+          </table>
+          <div class="footer-note">Gap shown as text, not as a warning colour. Top-N is not a "best" list.</div>
+        </div>
+        <div class="box">
+          <h3>Warning panel: canon share</h3>
+          <span class="borrow">borrows: ranking.md "Canon" row - share of top-N from one era or region</span>
+          <div class="muted" style="font-size:11px">Sample: 31 of top 50 are born 1820-1880 (sample). Share from one era shown with the cohort's own base rate beside it.</div>
+          <div class="bar" style="margin:8px 0"><i style="width:62%"></i></div>
+          <div class="footer-note">Layout slot for the Gutenberg-style or link-graph canon warning. Sample values only.</div>
+          <div class="footer-note">Method: <span class="sample">rank_score_v1 (sample)</span> - <a href="#method">notes/ranking.md</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- (b) MAP -->
+    <section class="panel" data-panel="map" role="tabpanel" hidden>
+      <span class="borrow">borrows: Embedding Atlas - 2D point overview, density, cluster labels, no edges (graph-explorers #3)</span>
+      <div class="map" aria-label="Overview point map (sample)">
+        <div class="axis">UMAP x / y (precomputed, sample)</div>
+        <div class="cluster" style="left:28%;top:34%;width:150px;height:110px"></div>
+        <div class="label" style="left:28%;top:34%">painters (sample)</div>
+        <div class="cluster" style="left:68%;top:62%;width:170px;height:130px"></div>
+        <div class="label" style="left:68%;top:62%">physicists (sample)</div>
+        <div class="cluster" style="left:78%;top:24%;width:90px;height:70px"></div>
+        <div class="label" style="left:78%;top:24%">politicians (sample)</div>
+        <div class="dot" style="left:26%;top:32%"></div>
+        <div class="dot" style="left:30%;top:36%"></div>
+        <div class="dot" style="left:24%;top:38%"></div>
+        <div class="dot" style="left:33%;top:30%"></div>
+        <div class="dot" style="left:66%;top:60%"></div>
+        <div class="dot" style="left:71%;top:66%"></div>
+        <div class="dot" style="left:69%;top:58%"></div>
+        <div class="dot" style="left:76%;top:22%"></div>
+        <div class="dot" style="left:81%;top:26%"></div>
+        <div class="lasso">Lasso (draw on map) selects a set. Right drawer then lists members and a timeline. Click a point to open its ego card. Edges appear only after a click.</div>
+      </div>
+      <div class="footer-note">Density shading is precomputed. Labels show above a zoom threshold. Points are sample.</div>
+    </section>
+
+    <!-- (c) TIMELINE -->
+    <section class="panel" data-panel="tl" role="tabpanel" hidden>
+      <span class="borrow">borrows: Histropedia / Litmaps - one lane per person, life span bar, work ticks by year (graph-explorers #7)</span>
+      <div class="timeline">
+        <div class="axis-row">
+          <div>Person (sample)</div>
+          <div class="axis-track">
+            <span style="left:0%">-500</span><span style="left:20%">-250</span><span style="left:40%">0</span>
+            <span style="left:60%">500</span><span style="left:80%">1000</span><span style="left:100%">1500</span>
+          </div>
+        </div>
+        <div class="lane">
+          <div class="name">Sample Person B <span class="muted">(BCE)</span></div>
+          <div class="track">
+            <div class="span" style="left:10%;width:12%"></div>
+            <div class="tick p" style="left:12%"></div><div class="tick" style="left:16%"></div><div class="tick" style="left:18%"></div>
+          </div>
+        </div>
+        <div class="lane">
+          <div class="name">Sample Person A</div>
+          <div class="track">
+            <div class="span" style="left:66%;width:9%"></div>
+            <div class="tick p" style="left:68%"></div><div class="tick" style="left:70%"></div><div class="tick" style="left:72%"></div><div class="tick v" style="left:74%"></div>
+          </div>
+        </div>
+        <div class="lane">
+          <div class="name">Sample Person D (login)</div>
+          <div class="track">
+            <div class="tick" style="left:88%"></div><div class="tick" style="left:90%"></div>
+          </div>
+        </div>
+        <div class="lane">
+          <div class="name">Sample Org C</div>
+          <div class="track">
+            <div class="span" style="left:88%;width:10%"></div>
+            <div class="tick p" style="left:91%"></div>
+          </div>
+        </div>
+        <div class="legend">Bar = life span (or org founding to today). Tall tick = book, thin = repo or video (sample). Click a tick to open its work. Years are axis values; BCE on the left.</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ 4. RIGHT DRAWER: EGO CARD ============ -->
+  <aside class="drawer" id="drawer">
+    <div class="box">
+      <span class="borrow">borrows: FamousBirthdays - name, role, dates and rank pill beside one action (person-ui best of a)</span>
+      <div class="ego-head">
+        <div class="avatar" aria-label="image placeholder"></div>
+        <div>
+          <h2>Sample Person A</h2>
+          <div class="muted">painter; c. 1800-1870; T2</div>
+          <div style="margin-top:4px"><span class="pill">#3 in cohort</span> <span class="muted" style="font-size:11px">(sample)</span></div>
+        </div>
+      </div>
+      <div class="crumbs">Path: <a href="#">Search "sample"</a> &rsaquo; <a href="#">Sample Person B</a> &rsaquo; <strong>Sample Person A</strong></div>
+      <div class="ctrls">
+        <button type="button">Expand (+20 by weight)</button>
+        <button type="button">Re-centre here</button>
+        <button type="button">Open person page</button>
+      </div>
+    </div>
+
+    <div class="box">
+      <span class="borrow">borrows: sigma.js ego view capped at 300 nodes; Connected Papers - origin in the middle (graph-explorers #1, #2)</span>
+      <div class="graph-ph" role="img" aria-label="Ego graph placeholder, sample">
+        <div class="edge" style="left:50%;top:50%;width:90px;transform:rotate(-30deg)"></div>
+        <div class="edge" style="left:50%;top:50%;width:100px;transform:rotate(20deg)"></div>
+        <div class="edge" style="left:50%;top:50%;width:80px;transform:rotate(100deg)"></div>
+        <div class="edge" style="left:50%;top:50%;width:95px;transform:rotate(200deg)"></div>
+        <div class="edge" style="left:50%;top:50%;width:85px;transform:rotate(250deg)"></div>
+        <div class="node c" style="left:50%;top:50%"></div>
+        <div class="node" style="left:30%;top:28%"></div>
+        <div class="node" style="left:70%;top:24%"></div>
+        <div class="node" style="left:78%;top:52%"></div>
+        <div class="node" style="left:66%;top:78%"></div>
+        <div class="node" style="left:30%;top:74%"></div>
+        <div class="node" style="left:18%;top:50%"></div>
+        <div class="cap">1-hop, top 50 by weight (sample). Cap 300 nodes. Hover dims the rest.</div>
+      </div>
+      <div class="ctrls" style="margin-top:6px">
+        <button type="button">Layout: ForceAtlas2 (worker)</button>
+        <button type="button">Clear selection</button>
+      </div>
+    </div>
+
+    <div class="box">
+      <h3>Neighbours (top 50 by weight)</h3>
+      <div class="muted" style="font-size:11px">Edge type labels show what produced each link. Sample values.</div>
+      <ul class="nb-list" style="margin-top:4px">
+        <li><span>Sample Person B <span class="muted">(co-author, sample)</span></span><span class="num">0.91</span><span class="muted">#1</span></li>
+        <li><span>Sample Org C <span class="muted">(member of)</span></span><span class="num">0.84</span><span class="muted">#2</span></li>
+        <li><span>Sample Work W1 <span class="muted">(authored)</span></span><span class="num">0.77</span><span class="muted">#3</span></li>
+        <li><span>Sample Person E <span class="muted">(shared topic: colour)</span></span><span class="num">0.61</span><span class="muted">#4</span></li>
+        <li><span>Sample Person F <span class="muted">(same salon, sample)</span></span><span class="num">0.52</span><span class="muted">#5</span></li>
+        <li><span class="muted">... 45 more (sample)</span><span></span><span></span></li>
+      </ul>
+      <div class="footer-note">Edge types are tabs in the full view: co-work, member of, topic, said. Only 1-hop edges are drawn.</div>
+    </div>
+
+    <div class="box">
+      <span class="borrow">borrows: Wikidata metaphacts pathfinding; Connected Papers shortest-path highlight (graph-explorers #8)</span>
+      <h3>Path between two people</h3>
+      <div class="path-picker">
+        <select aria-label="From person"><option>From: Sample Person A</option><option>Sample Person B</option><option>Sample Person D</option></select>
+        <select aria-label="To person"><option>To: pick a person</option><option>Sample Person C</option><option>Sample Person F</option></select>
+        <button type="button">Find shortest chain of shared works</button>
+      </div>
+      <div class="footer-note">Result: chain of works and people, highlighted in the graph. Sample: no path found within 3 hops.</div>
+    </div>
+  </aside>
+</div>
+
+<!-- ============ 5. FOOTER ============ -->
+<footer class="foot">
+  <div>
+    <span class="borrow">borrows: Wikidata / OpenAlex / GitHub - sources line with licence and freshness (SYSTEM.md section 2 sources)</span>
+    <strong>Data sources and freshness</strong>
+    <ul>
+      <li>Wikidata dump 2026-10-.. (CC0), weekly diff</li>
+      <li>QRank week .. (sample), 12-month mean</li>
+      <li>Wikipedia link graph: dump date .. (sample)</li>
+      <li>OpenAlex authors: updated_date .. (sample)</li>
+      <li>GitHub events: ETag, daily (T1+ only)</li>
+    </ul>
+  </div>
+  <div>
+    <strong>Method and version</strong>
+    <ul>
+      <li>rank_score_v1 (sample), base = 0.40 sitelinks + 0.30 QRank + 0.20 PageRank; score = 0.8 base + 0.2 works</li>
+      <li>Insufficient evidence below 2 inputs or sitelinks &lt; 3; no rank shown</li>
+      <li>Gender is as recorded in source; never inferred. Notability, not importance.</li>
+      <li>Last bias audit: <span class="sample">release .. (sample)</span></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // Tiny vanilla helpers only. No libraries.
+  function showTab(name) {
+    document.querySelectorAll('[data-panel]').forEach(function (p) {
+      p.hidden = p.getAttribute('data-panel') !== name;
+    });
+    document.querySelectorAll('[role="tab"]').forEach(function (b) {
+      b.setAttribute('aria-selected', b.getAttribute('data-tab') === name ? 'true' : 'false');
+    });
+  }
+  function toggleEl(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('open');
+  }
+</script>
+</body>
+</html>

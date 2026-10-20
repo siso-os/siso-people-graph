@@ -1,0 +1,60 @@
+38313	https://github.com/TriliumNext/Trilium	Build your personal knowledge base with Trilium Notes
+31708	https://github.com/Zackriya-Solutions/meetily	Privacy first, AI meeting assistant with 4x faster Parakeet/Whisper live transcription, sp
+20682	https://github.com/modelscope/FunASR	Open-source speech recognition toolkit for training, inference, streaming ASR, VAD, punctu
+15514	https://github.com/AgriciDaniel/claude-obsidian	Self-organizing AI second brain for Obsidian + Claude Code. Drop any source and Claude rea
+15264	https://github.com/k2-fsa/sherpa-onnx	Speech-to-text, text-to-speech, speaker diarization, speech enhancement, source separation
+11138	https://github.com/QuentinFuxa/WhisperLiveKit	Real-time, local speech-to-text with streaming ASR, speaker diarization, translation, and 
+10640	https://github.com/pyannote/pyannote-audio	Neural building blocks for speaker diarization: speech activity detection, speaker change 
+8456	https://github.com/jdepoix/youtube-transcript-api	This is a python API which allows you to get the transcript/subtitles for a given YouTube 
+5662	https://github.com/MahmoudAshraf97/whisper-diarization	Automatic Speech Recognition with Speaker Diarization based on OpenAI Whisper
+4754	https://github.com/eugeniughelbur/obsidian-second-brain	Persistent memory for Claude Code and 6 other CLI agents, stored as plain markdown in your
+4517	https://github.com/dedupeio/dedupe	:id: A python library for accurate and scalable fuzzy matching, record deduplication and e
+3624	https://github.com/SamurAIGPT/llm-wiki-agent	A personal knowledge base that builds and maintains itself. Drop in sources — Claude (or C
+3179	https://github.com/modelscope/3D-Speaker	A Repository for Single- and Multi-modal Speaker Verification, Speaker Recognition and Spe
+3135	https://github.com/gramps-project/gramps	Source code for Gramps Genealogical program
+3064	https://github.com/FluidInference/FluidAudio	Frontier CoreML audio models in your apps — text-to-speech, speech-to-text, voice activity
+2436	https://github.com/timhutton/twitter-archive-parser	Python code to parse a Twitter archive and output in various ways
+2150	https://github.com/OpenMOSS/MOSS-Transcribe-Diarize	A 0.9B model for long-form transcription in 50+ languages with speaker diarization, timest
+2023	https://github.com/jimmc414/onefilellm	Specify a github or local repo, github pull request,  arXiv or Sci-Hub paper, Youtube tran
+1908	https://github.com/wq2012/awesome-diarization	A curated list of awesome Speaker Diarization papers, libraries, datasets, and other resou
+1740	https://github.com/gramps-project/gramps-web	Open Source Online Genealogy System
+1256	https://github.com/zinggAI/zingg	Scalable master data management, identity resolution, entity resolution, and deduplication
+1218	https://github.com/aTrainTranscription/aTrain	A GUI tool for offline transcription of speech recordings, including speaker diarization, 
+1063	https://github.com/J535D165/recordlinkage	A powerful and modular toolkit for record linkage and duplicate detection in Python
+1059	https://github.com/ZeroPointRepo/youtube-skills	YouTube Transcript API skills for AI agents. Get transcripts, search videos, browse channe
+936	https://github.com/eclipse-ditto/ditto	Eclipse Ditto™: Digital Twin framework of Eclipse IoT - main repository
+884	https://github.com/stephenlthorn/auto-identity-remove	Automated data broker opt-out runner — removes your personal info from 30+ people-search s
+828	https://github.com/fisharebest/webtrees	Online genealogy
+640	https://github.com/nafiesl/silsilah	A genealogy/family tree application, built with Laravel.
+594	https://github.com/siznax/wptools	Wikipedia tools (for Humans): easily extract data from Wikipedia, Wikidata, and other Medi
+579	https://github.com/Nomily-Ai/nomily-app	BYOK voice recording companion with ASR transcription, speaker diarization, AI summaries, 
+556	https://github.com/wq2012/SpectralCluster	Python re-implementation of the (constrained) spectral clustering algorithms used in Googl
+554	https://github.com/BUTSpeechFIT/DiariZen	A toolkit for speaker diarization. 
+551	https://github.com/akashmjn/tinydiarize	Minimal extension of OpenAI's Whisper adding speaker diarization with special tokens
+504	https://github.com/taylorlu/Speaker-Diarization	speaker diarization by uis-rnn and speaker embedding by vgg-speaker-recognition
+458	https://github.com/jim60105/docker-whisperX	Dockerfile for WhisperX: Automatic Speech Recognition with Word-Level Timestamps and Speak
+434	https://github.com/ayoungprogrammer/nlquery	Natural Language Engine on WikiData
+433	https://github.com/dedupeio/csvdedupe	:id: Command line tool for deduplicating CSV files
+417	https://github.com/dedupeio/dedupe-examples	:id: Examples for using the dedupe library
+412	https://github.com/Wikidata-Toolkit/Wikidata-Toolkit	Java library to interact with Wikibase
+407	https://github.com/J535D165/data-matching-software	A list of free data matching and record linkage software. 
+402	https://github.com/geneweb/geneweb	GeneWeb is a free (as in free speech) genealogy software with a web interface created by D
+391	https://github.com/izwi-ai/izwi	Voice AI runtime. Local first transcription, speaker diarization, TTS, and voice cloning w
+382	https://github.com/kigner/audio.cpp-webui	audio.cpp with a full-task WebUI - pure C++ audio-model inference engine powered by ggml. 
+374	https://github.com/DongKeon/Awesome-Speaker-Diarization	Some comprehensive papers about speaker diarization
+374	https://github.com/pretyflaco/millet	Fully local meeting transcription with speaker diarization, AI summaries, and PDF output
+370	https://github.com/dahlia/wikidata	Wikidata client library for Python
+365	https://github.com/MGeurts/genealogy	Genealogy is a free and open-source family tree PHP application to record family members a
+357	https://github.com/Quantatirsk/AsrServe	Self-hosted realtime and offline ASR with SOTA open models, speaker diarization and an Ope
+348	https://github.com/PeWu/topola-viewer	Topola Genealogy Viewer – interactive genealogy visualization
+323	https://github.com/ljsabc/Fujisaki	An ongoing (fast prototyping) project to create your own doppelgänger based on your Twitte
+313	https://github.com/dariusk/twitter-archiver	Make your own simple, public, searchable Twitter archive
+308	https://github.com/narcotic-sh/senko	Very fast, accurate speaker diarization
+282	https://github.com/JunKuang-algo/Agriculture-KnowledgeGraph-Data	对知识库Wikidata的爬虫以及数据处理脚本 将三元组关系对齐到语料库的脚本 获取知识图谱数据的脚本
+277	https://github.com/genea-app/genea-app	Visually build and edit family trees online. Genea is a completely serverless solution for
+268	https://github.com/NavodPeiris/speechlib	Speechlib is a library that unifies speaker diarization, transcription and speaker recogni
+264	https://github.com/opentapioca/opentapioca	Entity linking system for Wikidata updated by your edits in real time
+257	https://github.com/pyannote/pyannote-metrics	A toolkit for reproducible evaluation, diagnostic, and error analysis of speaker diarizati
+257	https://github.com/WDscholia/scholia	Wikidata-based scholarly profiles 
+249	https://github.com/macbre/nodemw	MediaWiki API and WikiData client written in Node.js
+241	https://github.com/larsgw/citation.js	Citation.js converts formats like BibTeX, Wikidata JSON and ContentMine JSON to CSL-JSON t

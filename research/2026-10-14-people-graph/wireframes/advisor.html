@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Advisor wireframe: Elon Musk public record (sample)</title>
+<style>
+  /* Structure only. Grey boxes, system font, black and grey. UI Hub restyles later. No JS. */
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #111; background: #eee; font-size: 14px; line-height: 1.4; }
+  .page { max-width: 1200px; margin: 0 auto; padding: 12px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .box { background: #fff; border: 1px solid #999; padding: 12px; }
+  .sample { background: #ddd; border: 1px dashed #777; padding: 1px 4px; font-size: 12px; color: #333; }
+  .borrow { display: block; font-size: 11px; color: #555; border-bottom: 1px dotted #999; margin-bottom: 8px; padding-bottom: 4px; }
+  .ph { background: #ccc; border: 1px solid #888; display: flex; align-items: center; justify-content: center; color: #333; font-size: 12px; min-height: 60px; text-align: center; padding: 6px; }
+  .chip { display: inline-block; border: 1px solid #666; background: #eee; padding: 2px 8px; margin: 2px; border-radius: 10px; font-size: 12px; }
+  .chip.on { background: #333; color: #fff; }
+  .chip.off { color: #888; border-style: dashed; }
+  .btn { display: inline-block; border: 1px solid #111; padding: 6px 12px; background: #fff; font: inherit; margin: 2px; }
+  .btn.solid { background: #111; color: #fff; }
+  .muted { color: #666; font-size: 12px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .cols { display: grid; grid-template-columns: 220px minmax(0, 1fr) 300px; gap: 12px; align-items: start; }
+  .strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+  .strip > div { border: 1px solid #888; background: #f3f3f3; padding: 6px 8px; font-size: 13px; }
+  .bar { height: 10px; background: #ddd; border: 1px solid #888; position: relative; }
+  .bar > span { position: absolute; left: 0; top: 0; bottom: 0; background: #444; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; border-bottom: 1px solid #ccc; padding: 6px 4px; vertical-align: top; }
+  th { background: #e5e5e5; font-weight: 600; }
+  .quote { border-left: 4px solid #444; padding: 6px 10px; margin: 8px 0; background: #f6f6f6; }
+  .quote .meta { font-size: 12px; color: #555; margin-top: 4px; }
+  .connective { font-style: italic; color: #666; font-size: 13px; margin: 10px 0 0 0; padding-left: 14px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .q { font-weight: 600; border-bottom: 1px solid #ccc; padding-bottom: 6px; margin-bottom: 4px; }
+  .meter { margin-top: 12px; font-size: 12px; color: #333; }
+  .card { display: grid; grid-template-columns: 34px 1fr; gap: 8px; border: 1px solid #aaa; padding: 8px; margin-bottom: 8px; background: #fafafa; }
+  .card .fav { background: #ccc; border: 1px solid #888; display: flex; align-items: center; justify-content: center; font-size: 10px; height: 34px; }
+  .input { border: 1px solid #555; background: #fff; padding: 8px; color: #666; }
+  .foot { font-size: 12px; color: #444; }
+  pre { background: #f3f3f3; border: 1px solid #aaa; padding: 8px; font-size: 12px; overflow: auto; margin: 6px 0; }
+  details summary { cursor: pointer; font-size: 12px; color: #333; }
+  .refusal { background: #f3f3f3; border: 1px solid #555; padding: 10px; margin-top: 6px; }
+  .stack > * + * { margin-top: 8px; }
+
+  /* Narrow viewport: single column below 900px */
+  @media (max-width: 899px) {
+    .cols { grid-template-columns: 1fr; }
+    .grid2, .pair { grid-template-columns: 1fr; }
+    .strip { grid-template-columns: 1fr 1fr; }
+    .hdr { grid-template-columns: 1fr !important; }
+    table.wide td:nth-child(n+3), table.wide th:nth-child(n+3) { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 1. HEADER -->
+  <section class="box" aria-label="Header">
+    <span class="borrow">borrows: Sensay - visible AI and assumed-information marker shown in the header; StoryFile - subject-controlled consent status chip; person.html header grid</span>
+    <div class="hdr" style="display:grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px;">
+      <div class="ph" style="min-height:120px;">avatar box (no photo, placeholder)</div>
+      <div>
+        <div style="font-size:24px; font-weight:700;">Elon Musk <span class="muted">advisor, text only (sample)</span></div>
+        <div style="margin-top:8px; border:2px solid #111; padding:6px 8px; font-weight:600;">From Elon Musk's public record. Not Elon Musk, not endorsed.</div>
+        <div class="muted" style="margin-top:6px;">EU AI Act Art. 50 notice (applies from 2 Aug 2026): this is an AI retrieval tool. The AI marker stays on every answer. Sample wording, not legal advice.</div>
+        <div style="margin-top:8px;">
+          <span class="muted">Consent:</span>
+          <span class="chip on">public record</span>
+          <span class="chip off">opted-in (not applicable)</span>
+          <span class="chip off">estate (not applicable)</span>
+        </div>
+      </div>
+    </div>
+    <div class="strip" aria-label="Coverage strip">
+      <div>sources: <span class="sample">84 (sample)</span></div>
+      <div>years: <span class="sample">2010-2025 (sample)</span></div>
+      <div>words: <span class="sample">0.0M (sample)</span></div>
+      <div>mediums: <span class="sample">5 (sample)</span> post, video, podcast, interview, essay</div>
+    </div>
+  </section>
+
+  <div class="cols">
+
+    <!-- 2. LEFT: CORPUS FILTERS -->
+    <aside class="box" aria-label="Corpus filters">
+      <span class="borrow">borrows: Factbase - dated range rows for narrowing by year; Perplexity - focus chips that switch the source type</span>
+      <div style="font-weight:600;">Date range</div>
+      <div class="muted" style="margin-top:6px;">From</div>
+      <input type="range" min="2010" max="2025" value="2010" style="width:100%;" aria-label="From year (sample)">
+      <div class="muted">From: <span class="sample">2010 (sample)</span></div>
+      <div class="muted" style="margin-top:6px;">To</div>
+      <input type="range" min="2010" max="2025" value="2025" style="width:100%;" aria-label="To year (sample)">
+      <div class="muted">To: <span class="sample">2025 (sample)</span></div>
+
+      <div style="font-weight:600; margin-top:14px;">Medium</div>
+      <div class="stack" style="margin-top:6px; font-size:13px;">
+        <label><input type="checkbox" checked> post <span class="sample">00</span></label><br>
+        <label><input type="checkbox" checked> video <span class="sample">00</span></label><br>
+        <label><input type="checkbox" checked> podcast <span class="sample">00</span></label><br>
+        <label><input type="checkbox" checked> interview <span class="sample">00</span></label><br>
+        <label><input type="checkbox" checked> essay <span class="sample">00</span></label>
+      </div>
+
+      <div style="font-weight:600; margin-top:14px;">Topics</div>
+      <div class="muted">from knowledge pack 2026-10-14.1 (sample topics)</div>
+      <div style="margin-top:4px;">
+        <span class="chip on">rockets</span><span class="chip">cars</span><span class="chip">payments</span><span class="chip on">AI</span><span class="chip">hiring</span><span class="chip">+ more</span>
+      </div>
+    </aside>
+
+    <!-- 3. CENTRE: CONVERSATION -->
+    <main class="box" aria-label="Conversation">
+      <span class="borrow">borrows: Dexa - timestamped links on every quote; StoryFile - verbatim clip blocks; Perplexity - inline numbered citations; Goodreads Ask-the-author - quote-block layout only</span>
+
+      <!-- Q1 answered -->
+      <div class="q">You: "What has he said about hiring?" <span class="sample">sample question</span></div>
+      <div class="muted">Answered from 4 spans (sample). Connective words are italic grey; quotes are verbatim.</div>
+
+      <div class="connective">On hiring, he said:</div>
+      <div class="quote">
+        <div>"[verbatim span 1, placeholder. Exactly as said.]"</div>
+        <div class="meta">2018-07-14 <span class="sample">sample date</span> &middot; medium: video &middot; source: [video title placeholder] &middot; <a href="https://example.org/watch?v=SAMPLE&amp;t=754">example.org/watch?v=SAMPLE&amp;t=754 (placeholder)</a></div>
+        <div class="meta">attribution: diarised speaker match, confidence <span class="sample">0.93 (sample)</span> &middot;
+          <details style="display:inline;"><summary style="display:inline;">context</summary>Before: [placeholder context] After: [placeholder context]</details>
+        </div>
+      </div>
+
+      <div class="connective">He came back to it in writing:</div>
+      <div class="quote">
+        <div>"[verbatim span 2, placeholder.]"</div>
+        <div class="meta">2022-11-03 <span class="sample">sample date</span> &middot; medium: post &middot; source: [post title placeholder] &middot; <a href="https://example.org/post/SAMPLE-2">example.org/post/SAMPLE-2 (placeholder)</a></div>
+        <div class="meta">attribution: author handle match, confidence <span class="sample">0.99 (sample)</span> &middot;
+          <details style="display:inline;"><summary style="display:inline;">context</summary>Before: [placeholder] After: [placeholder]</details>
+        </div>
+      </div>
+
+      <div class="connective">Later, on a podcast:</div>
+      <div class="quote">
+        <div>"[verbatim span 3, placeholder.]"</div>
+        <div class="meta">2024-02-09 <span class="sample">sample date</span> &middot; medium: podcast (ASR transcript, labelled) &middot; source: [episode title placeholder] &middot; <a href="https://example.org/watch?v=SAMPLE&amp;t=1320">example.org/watch?v=SAMPLE&amp;t=1320 (placeholder)</a></div>
+        <div class="meta">attribution: voice match, confidence <span class="sample">0.91 (sample)</span> &middot;
+          <details style="display:inline;"><summary style="display:inline;">context</summary>Before: [placeholder] After: [placeholder]</details>
+        </div>
+      </div>
+
+      <div class="connective">In an essay he wrote:</div>
+      <div class="quote">
+        <div>"[verbatim span 4, placeholder.]"</div>
+        <div class="meta">2016-03-02 <span class="sample">sample date</span> &middot; medium: essay &middot; source: [essay title placeholder] &middot; <a href="https://example.org/essay/SAMPLE-4">example.org/essay/SAMPLE-4 (placeholder)</a></div>
+        <div class="meta">attribution: byline match, confidence <span class="sample">1.00 (sample)</span> &middot;
+          <details style="display:inline;"><summary style="display:inline;">context</summary>Before: [placeholder] After: [placeholder]</details>
+        </div>
+      </div>
+
+      <div class="meter">every sentence cited: <span class="sample">4/4 (sample)</span>
+        <div class="bar"><span style="width:100%"></span></div>
+      </div>
+
+      <!-- Q2 contradiction -->
+      <div class="q" style="margin-top:18px;">You: "Has his view on [topic] changed?" <span class="sample">sample question</span></div>
+      <div class="connective">Two dated spans, side by side. Never "he believes".</div>
+      <div class="pair" style="margin-top:6px;">
+        <div class="quote"><div class="muted">2019 <span class="sample">sample</span></div><div>"[2019 verbatim span, placeholder]"</div><div class="meta">medium: post &middot; source: [title placeholder] &middot; <a href="https://example.org/post/SAMPLE-5">URL (placeholder)</a> &middot; confidence <span class="sample">0.95 (sample)</span></div></div>
+        <div class="quote"><div class="muted">2023 <span class="sample">sample</span></div><div>"[2023 verbatim span, placeholder]"</div><div class="meta">medium: interview &middot; source: [title placeholder] &middot; <a href="https://example.org/watch?v=SAMPLE&amp;t=410">URL with timestamp (placeholder)</a> &middot; confidence <span class="sample">0.92 (sample)</span></div></div>
+      </div>
+
+      <!-- Q3 refusal -->
+      <div class="q" style="margin-top:18px;">You: "What does he think about [unrelated topic]?" <span class="sample">sample question</span></div>
+      <div class="refusal">
+        <div style="font-weight:700;">Not in Elon Musk's public record (sample: 84 sources, 2010-2025)</div>
+        <div class="muted" style="margin-top:6px;">Nearest topics he did speak on <span class="sample">sample</span>:</div>
+        <div style="margin-top:4px;">
+          <button class="btn">rockets <span class="sample">sample</span></button>
+          <button class="btn">cars <span class="sample">sample</span></button>
+          <button class="btn">payments <span class="sample">sample</span></button>
+        </div>
+      </div>
+
+      <!-- Ask input -->
+      <div style="margin-top:18px; border-top:1px solid #ccc; padding-top:10px;">
+        <div class="input" style="color:#666;">Ask his public record... (input placeholder)</div>
+        <div style="margin-top:6px; display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+          <button class="btn solid">Ask</button>
+          <span class="muted">answers are quotes only</span>
+        </div>
+      </div>
+    </main>
+
+    <!-- 4. RIGHT: SOURCES PANEL -->
+    <aside class="box" aria-label="Sources">
+      <span class="borrow">borrows: Perplexity - source cards with index number, favicon box, title, domain and date; report action as a plain link under the list</span>
+      <div style="font-weight:600;">Sources used in this conversation</div>
+      <div class="muted" style="margin-bottom:8px;">4 of 84 <span class="sample">(sample)</span></div>
+
+      <div class="card">
+        <div class="fav">fav</div>
+        <div>
+          <div style="font-weight:600;">[video title placeholder]</div>
+          <div class="muted">example.org &middot; 2018-07-14 <span class="sample">sample</span> &middot; video</div>
+          <div class="muted">used in: block 1</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="fav">fav</div>
+        <div>
+          <div style="font-weight:600;">[post title placeholder]</div>
+          <div class="muted">example.org &middot; 2022-11-03 <span class="sample">sample</span> &middot; post</div>
+          <div class="muted">used in: block 2</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="fav">fav</div>
+        <div>
+          <div style="font-weight:600;">[episode title placeholder]</div>
+          <div class="muted">example.org &middot; 2024-02-09 <span class="sample">sample</span> &middot; podcast, ASR</div>
+          <div class="muted">used in: block 3</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="fav">fav</div>
+        <div>
+          <div style="font-weight:600;">[essay title placeholder]</div>
+          <div class="muted">example.org &middot; 2016-03-02 <span class="sample">sample</span> &middot; essay</div>
+          <div class="muted">used in: block 4</div>
+        </div>
+      </div>
+
+      <div style="margin-top:10px;">
+        <button class="btn">Report a wrong attribution</button>
+        <div class="muted" style="margin-top:4px;">Opens a form: span, source, what is wrong. Removing a source removes its spans within 24 h <span class="sample">(sample window)</span>.</div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- 5. FOOTER: AGENT CONTRACT + RELEASE METRICS -->
+  <footer class="box foot" aria-label="Footer">
+    <span class="borrow">borrows: ALCE (arXiv 2305.14627) - per-sentence citation precision and the silence test as release metrics; advisor-design.md section 5 - the ask() return shape</span>
+    <div class="grid2">
+      <div>
+        <div style="font-weight:600;">Agent API contract: ask(person, question, since?, until?)</div>
+        <pre>{
+  "answered": true,
+  "blocks": [
+    {"utt_id": "utt_SAMPLE_0001", "text": "[verbatim span placeholder]", "said_at": "2018-07-14", "medium": "video", "url": "https://example.org/watch?v=SAMPLE&amp;t=754", "span": [0, 0]}
+  ],
+  "coverage": {"sources": 84, "years": "2010-2025", "words": "0.0M"},
+  "refusal": null
+}</pre>
+        <div class="muted">All values are sample. On refusal: <code>answered: false</code>, <code>blocks: []</code>, <code>refusal: {reason, nearest_topics[]}</code>.</div>
+      </div>
+      <div>
+        <div style="font-weight:600;">Release metrics (sample numbers, not measured)</div>
+        <table style="margin-top:6px;">
+          <thead><tr><th>Metric</th><th>Value</th><th>Gate</th></tr></thead>
+          <tbody>
+            <tr><td>Citation precision (per sentence)</td><td><span class="sample">0.98 (sample)</span></td><td>report</td></tr>
+            <tr><td>Citation recall (per sentence)</td><td><span class="sample">0.91 (sample)</span></td><td>report</td></tr>
+            <tr><td>Silence test: abstain rate (50 questions)</td><td><span class="sample">0.97 (sample)</span></td><td>&ge; 0.95</td></tr>
+            <tr><td>Answerable set: answered rate</td><td><span class="sample">0.84 (sample)</span></td><td>&ge; 0.80</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div style="margin-top:10px; font-weight:600;">From Elon Musk's public record. Not Elon Musk, not endorsed.</div>
+  </footer>
+
+</div>
+</body>
+</html>
