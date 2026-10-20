@@ -5,7 +5,7 @@ directory and a specific external volume. That is invisible policy: the same
 command answers differently on two machines and nothing in the output says why.
 
 Resolution order, first hit wins:
-  1. explicit paths passed by the caller
+  1. explicit paths passed by the caller (must be existing files; no fallback)
   2. PEOPLE_GRAPH_CONFIG -- a JSON file mapping domain -> path
   3. PEOPLE_GRAPH_<DOMAIN> environment variables
   4. ./<domain>.sqlite relative to the working directory (the fixture default)
@@ -58,9 +58,11 @@ def load(explicit: dict[str, str] | None = None, root: str | None = None,
 
     if explicit:
         for domain, path in explicit.items():
-            if path and os.path.exists(path):
-                cfg.paths[domain] = os.path.abspath(path)
-                cfg.origins[domain] = "explicit"
+            full = os.path.expanduser(os.fspath(path))
+            if not os.path.isfile(full):
+                raise ValueError(f"{domain} database is not a file: {path}")
+            cfg.paths[domain] = os.path.abspath(full)
+            cfg.origins[domain] = "explicit"
 
     conf_file = env.get("PEOPLE_GRAPH_CONFIG")
     if conf_file and os.path.exists(conf_file):

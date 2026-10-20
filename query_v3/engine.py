@@ -15,6 +15,7 @@ Safety properties held here rather than at each surface:
 """
 from __future__ import annotations
 
+from pathlib import Path
 import sqlite3
 import time
 
@@ -45,13 +46,14 @@ class QueryEngine:
             self.resolver = resmod.NullResolver(None, self.caps)
             return
         first = paths.get("people") or next(iter(paths.values()))
-        self.con = sqlite3.connect(f"file:{first}?mode=ro", uri=True,
+        self.con = sqlite3.connect(Path(first).resolve().as_uri() + "?mode=ro", uri=True,
                                    timeout=self.config.timeout_ms / 1000)
         attached: dict[str, str] = {}
         for name, path in paths.items():
             try:
                 self.con.execute(
-                    "ATTACH DATABASE ? AS " + name, (f"file:{path}?mode=ro",)
+                    "ATTACH DATABASE ? AS " + name,
+                    (Path(path).resolve().as_uri() + "?mode=ro",)
                 )
                 attached[name] = path
             except sqlite3.Error as exc:
@@ -506,7 +508,7 @@ class QueryEngine:
 
         rows = self.con.execute(
             f"""SELECT domain, content_ref, role, title, source, observed_at,
-                       person_id
+                       meta_json, person_id
                 FROM people.person_content
                 WHERE person_id IN ({marks})
                 ORDER BY domain, title, content_ref
@@ -521,12 +523,15 @@ class QueryEngine:
                 "role": role,
                 "title": title,
                 "contributed_by_row": pid,
+                "source": src,
+                "observed_at": obs,
+                "meta_json": meta,
                 "evidence": ev.observed(source=src, observed_at=obs,
                                         detail=f"person_content edge from {src}"
                                         ).as_dict(),
                 "fetch": fetch_routes(self.con, self.caps, d, ref),
             }
-            for d, ref, role, title, src, obs, pid in rows
+            for d, ref, role, title, src, obs, meta, pid in rows
         ]
 
         r.result = {

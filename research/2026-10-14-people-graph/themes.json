@@ -1,0 +1,14 @@
+{
+  "run": "2026-10-14-people-graph",
+  "owner": "PEOPLE-GRAPH",
+  "themes": [
+    {"name": "attach-not-scrape", "claim": "Wikidata (13.7M humans, 5M orgs, CC0) is the free all-of-history skeleton; we hold QIDs on only 3,342 of 339,217 rows", "evidence": ["notes/holdings.md", "notes/gap-dbs-orgs.md", "verify/checker-b.jsonl"], "action": "SYSTEM.md build step 1"},
+    {"name": "statement-and-judgement-model", "claim": "every value a sourced statement; identity as reversible same/different judgements", "evidence": ["notes/prior-art.md", "notes/people-dbs.md"], "action": "SYSTEM.md section 2"},
+    {"name": "attention-tiers", "claim": "cost follows attention: T0 free skeleton, T3 deep extraction only for picked people", "evidence": ["notes/extraction.md", "notes/source-map.md"], "action": "SYSTEM.md section 1"},
+    {"name": "verbatim-advisor-gap", "claim": "no product cites every sentence and refuses on silence", "evidence": ["notes/advisors.md"], "action": "advisor-design.md"},
+    {"name": "said-archive-gap", "claim": "no per-person 'everything they said' archive exists for builders or founders; Factbase covers politicians only", "evidence": ["notes/said-archives.md", "notes/gap-said.md"], "action": "Elon T3 page first"},
+    {"name": "rank-as-components", "claim": "no ranking beats Pantheon HPI on bias; show components, inputs present and cohort base rates", "evidence": ["notes/ranking.md"], "action": "rank_score_v1"},
+    {"name": "never-draw-the-whole-graph", "claim": "points map plus capped ego view is how big graphs stay browsable", "evidence": ["notes/graph-explorers.md"], "action": "wireframes/explore.html"},
+    {"name": "knowledge-packs", "claim": "packs are cited principles/methods/works per person, feeding Law Book, Agents Hub skills and advisors", "evidence": ["knowledge-packs.md"], "action": "Elon, Theo, Seneca first"}
+  ]
+}
